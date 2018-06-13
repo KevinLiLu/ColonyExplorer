@@ -9,7 +9,8 @@
     "start-ganache": "cd src/lib/colonyNetwork && ganache-cli -d --gasLimit 7000000 --acctKeys ganache-accounts.json",
     "start-trufflepig": "cd src/lib/colonyNetwork && trufflepig --ganacheKeyFile ganache-accounts.json",
     "start": "node src/index",
-    "test": "jest"
+    "test": "jest",
+    "start-dev": "node src/startDev"
   },
   "contributors": [
     "Christian Maniewski <chris@colony.io>",
