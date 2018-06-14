@@ -4,6 +4,8 @@ The `general-store` is the datastore where we save data that cannot be instantan
 
 The current datastore implementation uses a MongoDB database deployed in an AWS EC2 instance. MongoDB is used for the datastore due to it's JSON-like structure which makes it straightforward to understand. A full scalable production blockchain explorer application would leverage multiple datastores for different functionalities.
 
+Details about MongoDB concepts can be read at https://docs.mongodb.com/manual/core/databases-and-collections/.
+
 # Collections
 We use a single database `data` and utilize multiple collections for different data.
 
