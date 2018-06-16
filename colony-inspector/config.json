@@ -5,5 +5,9 @@
     "hostname": "",
     "port": "",
     "database": ""
+  },
+  "ethereum": {
+    "network": "rinkeby",
+    "privateKey": ""
   }
 }
