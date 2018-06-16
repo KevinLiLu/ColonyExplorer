@@ -24,13 +24,9 @@ The `statistics` collection only contains one document which can be identified b
 
 The `time-series-data` collection contains time series data regarding the Colony Network to supply the graph data in the `metropolis` web application.
 
-The time series data currently saved:
-- colony count
-- task count
+The time series data we currently track can be found at [colony-inspector README](../colony-inspector/README.md#time-series-data).
 
-We use a document to track the colony count by day and another one for tracking task count by day.
-
-We set the document `name` field to be the type of data tracked (value is `total-colony-count` or `total-task-count`). We insert an entry (key is date formatted as `mm-dd-yy` and value is the count) for each day.
+We use a separate document to track a metric. We set the document `name` field to be the type of data tracked (ex. `total-colony-count`). We insert an entry (key is date formatted as `mm-dd-yy` and value is the count) for each day.
 
 Ideally this time series data would be saved in an actual time series datastore like InfluxDB or OpenTSDB, but we want to maintain minimal dependencies as we have limited time and resources in a hackathon.
 
