@@ -1,7 +1,6 @@
-const { default: ColonyNetworkClient } = require('@colony/colony-js-client');
 const moment = require('moment');
 
-const createAdapter = require('./etherAdapter');
+const getColonyNetworkClient = require('./ColonyNetworkClient');
 const { findOne, updateOne } = require('./mongoDAO');
 
 // general-store collection names
@@ -13,6 +12,7 @@ const COLLECTION_TIME_SERIES_DATA = 'time-series-data';
 const KEY_TOTAL_DOMAIN_COUNT = 'total-domain-count';
 const KEY_TOTAL_TASK_COUNT = 'total-task-count';
 const KEY_TOTAL_COLONY_COUNT = 'total-colony-count';
+const KEY_TOTAL_SKILL_COUNT = 'total-skill-count';
 
 /*
 * Returns the snapshot date saved in general-store.
@@ -44,12 +44,9 @@ setTimeSeriesData = async (name, timestamp, value) => {
 * Run one iteration of crawling to calculate and save statistics to general-store.
 */
 runOnce = async () => {
-  // TODO: remove this log
   console.log(`Running loop at ${moment().format()}`);
-  // Connect to ColonyNetwork using adapter
-  const adapter = await createAdapter(0);
-  const networkClient = new ColonyNetworkClient({ adapter });
-  await networkClient.init();
+  // Get ColonyNetworkClient object
+  const networkClient = await getColonyNetworkClient();
 
   // TODO: remove these statements since they are instantaneous and we do not need to save these to general-store
   const totalColonyCount = (await networkClient.getColonyCount.call()).count;
@@ -58,8 +55,8 @@ runOnce = async () => {
   // Crawl all the colonies to calculate statistics
   var totalDomainCount = 0, totalTaskCount = 0;
 
-  for (i = 1; i < totalColonyCount + 1; i++) {
-    const colonyClient = await networkClient.getColonyClient(i);
+  for (id = 1; id < totalColonyCount + 1; id++) {
+    const colonyClient = await networkClient.getColonyClient(id);
 
     // Save relevant calculated data
     const domainCount = (await colonyClient.getDomainCount.call()).count;
@@ -70,7 +67,7 @@ runOnce = async () => {
     // [ADVANCED] TODO: Pot balances
   }
 
-  console.log(`Total domain count: ${totalDomainCount}, total task count: ${totalTaskCount}`);
+  console.log(`total-domain-count: ${totalDomainCount}, total-task-count: ${totalTaskCount}, total-colony-count: ${totalColonyCount}, total-skill-count: ${totalSkillCount}`);
 
   // Save statistics to general-store
   await updateOne(COLLECTION_STATISTICS, {'name':'statistics'}, {[KEY_TOTAL_DOMAIN_COUNT]: totalDomainCount});
@@ -86,6 +83,8 @@ runOnce = async () => {
     // Update time-series data
     await setTimeSeriesData(KEY_TOTAL_COLONY_COUNT, currentDate, totalColonyCount);
     await setTimeSeriesData(KEY_TOTAL_TASK_COUNT, currentDate, totalTaskCount);
+    await setTimeSeriesData(KEY_TOTAL_DOMAIN_COUNT, currentDate, totalDomainCount);
+    await setTimeSeriesData(KEY_TOTAL_SKILL_COUNT, currentDate, totalSkillCount);
 
     // Set new snapshot date
     await setSnapshotDate(currentDate);

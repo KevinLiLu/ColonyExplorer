@@ -22,6 +22,10 @@ Configurations to connect to `general-store` are found in `config.json`. This js
     "hostname": "",
     "port": "",
     "database": ""
+  },
+  "ethereum": {
+    "network": "rinkeby",
+    "privateKey": ""
   }
 }
 ```
@@ -30,7 +34,11 @@ Configurations to connect to `general-store` are found in `config.json`. This js
 The `colony-inspector` runs an "infinite loop" so you will need to run the daemon as a background process.
 
 ```
+// Run in background mode
 nohup yarn run-inspector 2>&1 >/dev/null &
+
+// Run in primary terminal view
+yarn run-inspector
 ```
 
 # Data
@@ -49,6 +57,8 @@ The `colony-inspector` also saves time series data to identify trends over time.
 We save the following data points to `general-store`:
 - total-colony-count
 - total-task-count
+- total-domain-count
+- total-skill-count
 
 # Snapshot Date
 The `colony-inspector` uses a `snapshotDate` field that is retrieved from `general-store` to determine when to save a new time series data point.

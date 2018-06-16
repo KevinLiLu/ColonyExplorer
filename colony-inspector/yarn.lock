@@ -2,42 +2,50 @@
 # yarn lockfile v1
 
 
-"@colony/colony-js-adapter-ethers@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@colony/colony-js-adapter-ethers/-/colony-js-adapter-ethers-1.3.0.tgz#84504e5b2982d051d81f56ad6ee6ef0bc7c15e01"
+"@colony/colony-contract-loader-network@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@colony/colony-contract-loader-network/-/colony-contract-loader-network-1.0.1.tgz#388da43dc59e85b5f032ea064c1ee5274b6c942f"
   dependencies:
-    "@colony/colony-js-adapter" "^1.3.0"
-    "@colony/colony-js-contract-loader" "^1.3.0"
+    "@colony/colony-js-contract-loader" "^1.4.1"
+    assert "^1.4.1"
+    babel-runtime "^6.26.0"
+
+"@colony/colony-js-adapter-ethers@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@colony/colony-js-adapter-ethers/-/colony-js-adapter-ethers-1.4.1.tgz#d1ed29afa11864d1d2b4b8008e3e4710447ddb78"
+  dependencies:
+    "@colony/colony-js-adapter" "^1.4.1"
+    "@colony/colony-js-contract-loader" "^1.4.1"
     "@colony/colony-js-utils" "^1.3.0"
     babel-runtime "^6.26.0"
     ethers "^3.0.17"
 
-"@colony/colony-js-adapter@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@colony/colony-js-adapter/-/colony-js-adapter-1.3.0.tgz#d56739154a5cf48909bcda4e589d24cc964b7734"
+"@colony/colony-js-adapter@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@colony/colony-js-adapter/-/colony-js-adapter-1.4.1.tgz#f61d719bcd9a6c7cc9114550cf6d0d3e199c4224"
   dependencies:
-    "@colony/colony-js-contract-loader" "^1.3.0"
+    "@colony/colony-js-contract-loader" "^1.4.1"
     bn.js "^4.11.6"
 
-"@colony/colony-js-client@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@colony/colony-js-client/-/colony-js-client-1.3.0.tgz#c56f2ad2cadabce77dbec2bb0a772493e54410a7"
+"@colony/colony-js-client@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@colony/colony-js-client/-/colony-js-client-1.4.1.tgz#ea9e89f9032a1eae1ae28a1a601a89c0cc85c56b"
   dependencies:
-    "@colony/colony-js-adapter" "^1.3.0"
-    "@colony/colony-js-contract-client" "^1.3.0"
-    "@colony/colony-js-contract-loader" "^1.3.0"
+    "@colony/colony-js-adapter" "^1.4.1"
+    "@colony/colony-js-contract-client" "^1.4.1"
+    "@colony/colony-js-contract-loader" "^1.4.1"
     "@colony/colony-js-utils" "^1.3.0"
     assert "^1.4.1"
     babel-runtime "^6.26.0"
     bn.js "^4.11.6"
     web3-utils "^1.0.0-beta.34"
 
-"@colony/colony-js-contract-client@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@colony/colony-js-contract-client/-/colony-js-contract-client-1.3.0.tgz#7e2e5e1dbdf553db91b637657e2ae1cd022c8771"
+"@colony/colony-js-contract-client@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@colony/colony-js-contract-client/-/colony-js-contract-client-1.4.1.tgz#1ada1fb2789cc690647503ca6b112841976e82c4"
   dependencies:
-    "@colony/colony-js-adapter" "^1.3.0"
-    "@colony/colony-js-contract-loader" "^1.3.0"
+    "@colony/colony-js-adapter" "^1.4.1"
+    "@colony/colony-js-contract-loader" "^1.4.1"
     "@colony/colony-js-utils" "^1.3.0"
     assert "^1.4.1"
     babel-runtime "^6.26.0"
@@ -47,18 +55,9 @@
     lodash.isplainobject "^4.0.6"
     web3-utils "^1.0.0-beta.34"
 
-"@colony/colony-js-contract-loader-http@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@colony/colony-js-contract-loader-http/-/colony-js-contract-loader-http-1.3.0.tgz#cc15a29cfafbd5dc0dcc2989a4c6150f43c9acfa"
-  dependencies:
-    "@colony/colony-js-contract-loader" "^1.3.0"
-    assert "^1.4.1"
-    babel-runtime "^6.26.0"
-    isomorphic-fetch "^2.2.1"
-
-"@colony/colony-js-contract-loader@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@colony/colony-js-contract-loader/-/colony-js-contract-loader-1.3.0.tgz#280b406fd9da9232b0281e95672ce08deef5fc68"
+"@colony/colony-js-contract-loader@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@colony/colony-js-contract-loader/-/colony-js-contract-loader-1.4.1.tgz#0427b24d1fc06e3482895c4ebbea94832016a719"
   dependencies:
     assert "^1.4.1"
     babel-runtime "^6.26.0"
@@ -333,12 +332,6 @@ encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
-encoding@^0.1.11:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
-  dependencies:
-    iconv-lite "~0.4.13"
-
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -359,9 +352,9 @@ eth-lib@0.1.27:
     ws "^3.0.0"
     xhr-request-promise "^0.1.2"
 
-ethers@^3.0.17, ethers@^3.0.21:
-  version "3.0.21"
-  resolved "https://registry.yarnpkg.com/ethers/-/ethers-3.0.21.tgz#cd17f255f5f722b2df122268d436bf64b0035d05"
+ethers@^3.0.17, ethers@^3.0.22:
+  version "3.0.22"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-3.0.22.tgz#7fab1ea16521705837aa43c15831877b2716b436"
   dependencies:
     aes-js "3.0.0"
     bn.js "^4.4.0"
@@ -543,7 +536,7 @@ iconv-lite@0.4.19:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
-iconv-lite@0.4.23, iconv-lite@~0.4.13:
+iconv-lite@0.4.23:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
@@ -573,20 +566,9 @@ is-hex-prefixed@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-hex-prefixed/-/is-hex-prefixed-1.0.0.tgz#7d8d37e6ad77e5d127148913c573e082d777f554"
 
-is-stream@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
-
 is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
-
-isomorphic-fetch@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
-  dependencies:
-    node-fetch "^1.0.1"
-    whatwg-fetch ">=0.10.0"
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -716,13 +698,6 @@ nano-json-stream-parser@^0.1.2:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
-
-node-fetch@^1.0.1:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
-  dependencies:
-    encoding "^0.1.11"
-    is-stream "^1.0.1"
 
 number-to-bn@1.7.0:
   version "1.7.0"
@@ -1079,10 +1054,6 @@ web3-utils@^1.0.0-beta.34:
     randomhex "0.1.5"
     underscore "1.8.3"
     utf8 "2.1.1"
-
-whatwg-fetch@>=0.10.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
 
 wrappy@1:
   version "1.0.2"
