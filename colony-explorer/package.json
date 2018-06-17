@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.2",
+    "mongodb": "^3.0.10",
     "react": "^16.4.0",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.81.1"
   },
   "scripts": {
     "start": "react-scripts start",
