@@ -20,14 +20,14 @@ const userAuth    = require('./user-auth')(db);
 const coins       = require('./coin')(db);
 // const comments    = require('./comment')(db);
 
-const model = require('./user-auth/user-authModel')(db);
+// const model = require('./user-auth/user-authModel')(db);
 // gets the controllers and gets passed the models
-const controller = require('./user-auth/user-authController')(model);
+// const controller = require('./user-auth/user-authController')(model);
 
 // configuring the functions for auth/tokens
 // const { authRouter, AuthController } = require('./user-auth');
-const token = require('./user-auth/user-authToken');
-const auth = require('./user-auth/user-authController');
+// const token = require('./user-auth/user-authToken');
+// const auth = require('./user-auth/user-authController');
 
 // console.log(auth);
 // console.log(AuthController);
@@ -65,13 +65,13 @@ app.use(token.receiveToken);
 
 
 // this is the route for the user auth (subject to change)
-app.use('/api/user/auth', (req, res, next) => {
-  req.user = {
-    userID: 1,
-  };
+// app.use('/api/user/auth', (req, res, next) => {
+//   req.user = {
+//     userID: 1,
+//   };
 
-  next();
-}, userAuth);
+//   next();
+// }, userAuth);
 
 // this is the route for the comment router to use for the comment routes
 // app.use('/api/coins/comments', (req, res, next) => {
@@ -96,22 +96,22 @@ app.use('/api/user/auth', (req, res, next) => {
 //   next();
 // }, coins);
 
-app.use('/api/coins', controller.allow({ roles: ['user'] }), coins);
+// app.use('/api/coins', controller.allow({ roles: ['user'] }), coins);
 
-app.use('/api/news/', (req, res, next) => {
-  req.user = {
-    userID: 1,
-    coinID: 1,
-  };
+// app.use('/api/news/', (req, res, next) => {
+//   req.user = {
+//     userID: 1,
+//     coinID: 1,
+//   };
 
-  const url = `https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=${cryptoKey}`;
-  fetch(url)
-    .then(data => data.json())
-    .then(news => res.json(news.articles));
-  // res.send('I AM NEWS');
+//   const url = `https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=${cryptoKey}`;
+//   fetch(url)
+//     .then(data => data.json())
+//     .then(news => res.json(news.articles));
+//   // res.send('I AM NEWS');
 
-  // next();
-});
+//   // next();
+// });
 
 app.get('/', (req, res) => { res.json('THIS IS TEST'); });
 
@@ -126,7 +126,7 @@ app.get('*', (request, response) => {
 // main error handler
 app.use((err, req, res, next) => {
   // console.error('THIS BE BIG ERROR', err);
-  res.status(500).send('IT BE BROKE');
+  res.status(500).send('This is broken please head back.');
 });
 
 // this starts listening on the server, logging out a confirmation, and errors if any
