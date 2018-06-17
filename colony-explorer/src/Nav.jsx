@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function Nav(props) {
@@ -16,8 +16,8 @@ export default function Nav(props) {
           <img className="logo" src="" alt="Logo" />
           <div id="navbarMenuHeroA" className="navbar-menu">
             <div className="navbar-end">
-              <h2 className="is-size-5">Tasks</h2>
-              <h2 className="is-size-5">Colonies</h2>
+              <a className="is-size-5"><Link to="/Tasks">Tasks</Link></a>
+              <a className="is-size-5"><Link to="/Colony">Colonies</Link></a>
 
               <div class="field is-grouped">
                <p class="control is-expanded">
