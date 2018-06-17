@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './logo.jpeg';
 import {Bar,Line,Pie} from 'react-chartjs-2';
 import './App.css';
 import Nav from './Nav.jsx';
+
+                // <Line
+                  // data=
+                  // options={{
+
+                  // }}
+                  // />
 
 class App extends Component {
   render() {
@@ -99,12 +106,7 @@ class App extends Component {
             <div className="tile is-parent is-7">
               <article className="tile is-child notification backdrop">
                 <p className="title">Graph</p>
-                <Line
-                  data= 0
-                  options={{
 
-                  }}
-                  />
               </article>
 
            </div>
