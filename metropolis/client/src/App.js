@@ -9,20 +9,34 @@ import StatCard from './StatCard';
 
 class App extends Component {
   state = {
+    totalColonyCount: '',
+    totalSkillCount: '',
     totalDomainCount: '',
     totalTaskCount: '',
   };
 
   componentDidMount() {
-    this.fetchData();
+    this.renderData();
   }
 
-  fetchData = async () => {
-    const data = (await axios.get('/api/statistics')).data;
-    const str = JSON.stringify(data);
+  renderData = () => {
+    this.renderStatisticsFromEthereum();
+    this.renderStatisticsFromMongo();
+  };
+
+  renderStatisticsFromMongo = async () => {
+    const data = (await axios.get('/api/statistics/mongo')).data;
     this.setState({
       totalDomainCount: data.statistics.totalDomainCount,
       totalTaskCount: data.statistics.totalTaskCount,
+    });
+  };
+
+  renderStatisticsFromEthereum = async () => {
+    const data = (await axios.get('/api/statistics/ethereum')).data;
+    this.setState({
+      totalColonyCount: data.totalColonyCount,
+      totalSkillCount: data.totalSkillCount,
     });
   };
 
@@ -35,7 +49,7 @@ class App extends Component {
         <Grid columns={4} relaxed>
           <StatCard
             title="Total # of Colonies"
-            value="5,555"
+            value={this.state.totalColonyCount}
             buttonText="View All Colonies"
           />
           <StatCard
@@ -50,7 +64,7 @@ class App extends Component {
           />
           <StatCard
             title="Total # of Skills"
-            value="5,555"
+            value={this.state.totalSkillCount}
             buttonText="View All Skills"
           />
         </Grid>
