@@ -1,0 +1,13 @@
+{
+  "mongo": {
+    "user": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "database": ""
+  },
+  "ethereum": {
+    "network": "",
+    "privateKey": ""
+  }
+}
