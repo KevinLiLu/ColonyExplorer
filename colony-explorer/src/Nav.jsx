@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 // import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import logo from './logo.jpeg';
+import Colony from './Colony.jsx';
+import Tasks from './Tasks.jsx';
+
 
 class Nav extends Component {
   render() {
@@ -15,12 +19,16 @@ class Nav extends Component {
     <div className="container">
       <section className="hero">
         <nav className="navbar">
-          <img className="logo" src="" alt="Logo" />
+          <img className="logo" src={logo} alt="Logo" />
           <div id="navbarMenuHeroA" className="navbar-menu">
-            <div className="navbar-end">
-              <a className="is-size-5" href="/Tasks">Tasks</a>
-              <a className="is-size-5" href="/Colony">Colonies</a>
 
+            <div className="navbar-end">
+              <a className="navbar-item" href="#">Tasks</a>
+            <br />
+            <br />
+              <a className="navbar-item" href="#">Colonies</a>
+
+              <a className="navbar-item">
               <div class="field is-grouped">
                <p class="control is-expanded">
               <input class="input" type="text" placeholder="Address" />
@@ -31,12 +39,7 @@ class Nav extends Component {
                  </a>
                 </p>
                </div>
-
-
-
-
-
-
+               </a>
 
     </div>
     </div>
