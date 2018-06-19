@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@colony/colony-contract-loader-network": "^1.0.1",
-    "@colony/colony-js-adapter-ethers": "^1.4.1",
-    "@colony/colony-js-client": "^1.4.1",
+    "@colony/colony-js-adapter-ethers": "^1.5.0",
+    "@colony/colony-js-client": "^1.5.1",
+    "@colony/colony-js-contract-loader-network": "^1.0.3",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",

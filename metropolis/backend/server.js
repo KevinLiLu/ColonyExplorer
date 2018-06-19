@@ -5,6 +5,7 @@ import logger from 'morgan';
 // Controllers
 import mainPageController from './controllers/mainPageController';
 import coloniesPageController from './controllers/coloniesPageController';
+import tokenController from './controllers/tokenController';
 
 // and create our instances
 const app = express();
@@ -28,5 +29,8 @@ router.get('/time-series-data/', mainPageController.fetchTimeSeriesData);
 // Colonies page api routes
 router.get('/colonies/', coloniesPageController.getPageOfColonies);
 router.get('/colonies/:pageId', coloniesPageController.getPageOfColonies);
+
+// Token api routes
+router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
