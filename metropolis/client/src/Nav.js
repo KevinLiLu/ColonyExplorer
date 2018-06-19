@@ -10,10 +10,10 @@ class Nav extends Component {
             Colony Explorer
           </NavLink>
           <Menu.Menu position="right">
-            <NavLink className="item" to="/tasks" replace>
+            <NavLink className="item" to="/tasks">
               Tasks
             </NavLink>
-            <NavLink className="item" to="/colonies" replace>
+            <NavLink className="item" to="/colonies">
               Colonies
             </NavLink>
             <Form className="item">
