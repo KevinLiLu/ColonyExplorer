@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
   Route,
-  NavLink,
-  HashRouter,
   BrowserRouter as Router,
 } from "react-router-dom";
 
@@ -19,7 +17,7 @@ class App extends Component {
           <NavBar />
           <div className="content">
             <Route exact path="/" component={Home}/>
-            <Route exact path="/colonies" component={Colonies}/>
+            <Route path="/colonies" component={Colonies}/>
             <Route path="/colony/:id" component={Colony}/>
           </div>
         </div>
