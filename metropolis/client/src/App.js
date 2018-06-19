@@ -6,6 +6,7 @@ import { Grid } from 'semantic-ui-react';
 import './App.css';
 import Nav from './Nav.js';
 import StatCard from './StatCard';
+import StatGraph from './StatGraph';
 
 class App extends Component {
   state = {
@@ -13,6 +14,22 @@ class App extends Component {
     totalSkillCount: '',
     totalDomainCount: '',
     totalTaskCount: '',
+    tsdTotalColonyCount: {
+      labels: [],
+      data: []
+    },
+    tsdTotalSkillCount: {
+      labels: [],
+      data: []
+    },
+    tsdTotalDomainCount: {
+      labels: [],
+      data: []
+    },
+    tsdTotalTaskCount: {
+      labels: [],
+      data: []
+    }
   };
 
   componentDidMount() {
@@ -22,13 +39,14 @@ class App extends Component {
   renderData = () => {
     this.renderStatisticsFromEthereum();
     this.renderStatisticsFromMongo();
+    this.renderGraphsFromMongo();
   };
 
   renderStatisticsFromMongo = async () => {
     const data = (await axios.get('/api/statistics/mongo')).data;
     this.setState({
-      totalDomainCount: data.statistics.totalDomainCount,
-      totalTaskCount: data.statistics.totalTaskCount,
+      totalDomainCount: data.totalDomainCount,
+      totalTaskCount: data.totalTaskCount,
     });
   };
 
@@ -37,6 +55,16 @@ class App extends Component {
     this.setState({
       totalColonyCount: data.totalColonyCount,
       totalSkillCount: data.totalSkillCount,
+    });
+  };
+
+  renderGraphsFromMongo = async () => {
+    const data = (await axios.get('/api/time-series-data/')).data;
+    this.setState({
+      tsdTotalColonyCount: data.totalColonyCount,
+      tsdTotalSkillCount: data.totalSkillCount,
+      tsdTotalDomainCount: data.totalDomainCount,
+      tsdTotalTaskCount: data.totalTaskCount,
     });
   };
 
@@ -69,11 +97,33 @@ class App extends Component {
           />
         </Grid>
 
-        {/* TODO: GRAPHS SECTION */}
+        <h1> Colony Network Trends</h1>
 
+        <Grid columns={2} relaxed>
+          <StatGraph
+            title="Total Colony Count (Past 7 Days)"
+            labels={this.state.tsdTotalColonyCount.labels}
+            data={this.state.tsdTotalColonyCount.data}
+          />
+          <StatGraph
+            title="Total Skill Count (Past 7 Days)"
+            labels={this.state.tsdTotalSkillCount.labels}
+            data={this.state.tsdTotalSkillCount.data}
+          />
+          <StatGraph
+            title="Total Domain Count (Past 7 Days)"
+            labels={this.state.tsdTotalDomainCount.labels}
+            data={this.state.tsdTotalDomainCount.data}
+          />
+          <StatGraph
+            title="Total Task Count (Past 7 Days)"
+            labels={this.state.tsdTotalTaskCount.labels}
+            data={this.state.tsdTotalTaskCount.data}
+          />
+        </Grid>
       </div>
     );
   }
-}
+};
 
 export default App;
