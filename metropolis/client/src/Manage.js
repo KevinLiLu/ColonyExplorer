@@ -8,7 +8,7 @@ class Manage extends Component {
   componentDidMount = () => {
   };
 
-  render() {
+  render = () => {
     return (
       <Container>
         <h1>Manage</h1>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Form, Input, Menu } from 'semantic-ui-react';
 
 class NavBar extends Component {
-  render() {
+  render = () => {
     return (
         <Menu>
           <NavLink className="item" to="/">
