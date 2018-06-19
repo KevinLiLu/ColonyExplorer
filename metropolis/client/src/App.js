@@ -13,7 +13,7 @@ import Task from './Task';
 import Manage from './Manage';
 
 class App extends Component {
-  render() {
+  render = () => {
     return (
       <Router>
         <div>

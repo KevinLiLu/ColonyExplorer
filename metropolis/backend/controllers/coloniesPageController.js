@@ -1,5 +1,6 @@
 import getNetworkClient from '../utils/colonyNetworkClient';
 import { findOne } from '../utils/mongoUtils';
+import { getTokenInfo } from '../utils/tokenUtils';
 
 let PAGE_SIZE = 10;
 
@@ -32,6 +33,7 @@ module.exports.getPageOfColonies = async function(req, res) {
     else {
       for (let id = startId; id < endId + 1; id++) {
         let address = (await networkClient.getColony.call({ id })).address;
+        let tokenInfo = await getTokenInfo(id);
 
         // If rest of page is empty (no colonies), then reset endId and
         // stop iterating
@@ -39,10 +41,16 @@ module.exports.getPageOfColonies = async function(req, res) {
           data.endId = id - 1;
           id = endId + 1;
         } else {
-          data.colonies.push({
+          let colonyDetails = {
             id,
             address,
-          });
+          };
+          // Add token info if valid
+          if (!tokenInfo.error) {
+            colonyDetails['name'] = tokenInfo.name;
+            colonyDetails['symbol'] = tokenInfo.symbol;
+          }
+          data.colonies.push(colonyDetails);
         }
       }
     }

@@ -39,7 +39,7 @@ class Colonies extends Component {
 
   renderRows = () => {
     return this.state.colonies.map(colony => {
-      const { id, address } = colony;
+      const { id, address, name, symbol } = colony;
       return (
         <Table.Row key={id || Math.random()}>
           <Table.Cell>
@@ -51,6 +51,12 @@ class Colonies extends Component {
             <NavLink className="item" to={`/colony/${id}`}>
               {address}
             </NavLink>
+          </Table.Cell>
+          <Table.Cell>
+              {name}
+          </Table.Cell>
+          <Table.Cell>
+              {symbol}
           </Table.Cell>
         </Table.Row>
       );
@@ -87,8 +93,10 @@ class Colonies extends Component {
           <Table celled striped color='teal'>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell colSpan='1'>Colony ID</Table.HeaderCell>
-                <Table.HeaderCell colSpan='5'>Address</Table.HeaderCell>
+                <Table.HeaderCell>Colony ID</Table.HeaderCell>
+                <Table.HeaderCell>Address</Table.HeaderCell>
+                <Table.HeaderCell>Token Name</Table.HeaderCell>
+                <Table.HeaderCell>Token Symbol</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
