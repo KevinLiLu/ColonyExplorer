@@ -19,5 +19,6 @@ app.use('/api', router);
 
 router.get('/statistics/mongo', mainPageController.fetchStatisticsFromMongo);
 router.get('/statistics/ethereum', mainPageController.fetchStatisticsFromEthereum);
+router.get('/time-series-data/', mainPageController.fetchTimeSeriesData);
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
