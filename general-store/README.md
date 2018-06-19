@@ -13,6 +13,7 @@ The main collections are:
 - statistics
 - time-series-data
 - colony-inspector-metadata
+- colonies
 
 ## statistics
 
@@ -33,3 +34,9 @@ Ideally this time series data would be saved in an actual time series datastore 
 ## colony-inspector-metadata
 
 The `colony-inspector-metadata` collection contains important internal metadata for the `colony-inspector` component, which crawls the Colony Network to update statistics and other featured data.
+
+## colonies
+
+The `colonies` collection caches the first "page" of colonies data to render the `Colonies` view. We store one page of data so the user will have a faster loading experience. Users will likely visit the `Colonies` main page and switch to another page without trying to fetch the next page of colonies, so we just store the first page.
+
+In a production environment, we would likely store more data in our cache to give the user the fastest loading experience. This has to be carefully calculated however to avoid excessive overhead costs in storing data.
