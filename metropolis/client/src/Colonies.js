@@ -72,7 +72,7 @@ class Colonies extends Component {
     this.renderData();
   };
 
-  render() {
+  render = () => {
     return (
       <Container textAlign='center'>
         {/* Error Message */}
@@ -113,7 +113,7 @@ class Colonies extends Component {
               <Icon name='left arrow' />
             </Button>
           )}
-          
+
           {this.state.endId !== this.state.totalColonyCount && (
             <Button
               primary

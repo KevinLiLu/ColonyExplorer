@@ -30,7 +30,7 @@ class Home extends Component {
     }
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.renderData();
   }
 
@@ -66,7 +66,7 @@ class Home extends Component {
     });
   };
 
-  render() {
+  render = () => {
     return (
       <Container textAlign='center'>
         <h1> Welcome to the Colony Explorer</h1>

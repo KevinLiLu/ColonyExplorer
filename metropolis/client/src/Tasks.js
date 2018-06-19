@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 
 class Tasks extends Component {
 
-  render() {
+  render = () => {
     return(
       <Container>
         <h1>Tasks Page</h1>
