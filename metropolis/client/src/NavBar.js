@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Form, Input, Menu } from 'semantic-ui-react';
 
-class Nav extends Component {
+class NavBar extends Component {
   render() {
     return (
         <Menu>
@@ -10,11 +10,14 @@ class Nav extends Component {
             Colony Explorer
           </NavLink>
           <Menu.Menu position="right">
-            <NavLink className="item" to="/tasks">
-              Tasks
+            <NavLink className="item" to="/manage">
+              Manage
             </NavLink>
             <NavLink className="item" to="/colonies">
               Colonies
+            </NavLink>
+            <NavLink className="item" to="/tasks">
+              Tasks
             </NavLink>
             <Form className="item">
               <Input style={{ marginRight: '10px' }}
@@ -30,4 +33,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default NavBar;
