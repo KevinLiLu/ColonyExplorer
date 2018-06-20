@@ -1,0 +1,65 @@
+.Home {
+  text-align: center;
+}
+
+.Home-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Home-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Home-title {
+  font-size: 1.5em;
+}
+
+.Home-intro {
+  font-size: large;
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD:metropolis/client/src/Home.css
+@keyframes Home-logo-spin {
+=======
+=======
+
+@keyframes Home-logo-spin {
+
+>>>>>>> Update
+.logo{
+  width: 200px;
+  height: 75px;
+ }
+
+.navBar {
+  background-color: black;
+ }
+}
+
+@keyframes App-logo-spin {
+
+=======
+<<<<<<< HEAD:metropolis/client/src/Home.css
+@keyframes Home-logo-spin {
+=======
+.logo{
+  width: 200px;
+  height: 75px;
+}
+
+.navBar {
+  background-color: black;
+}
+
+@keyframes App-logo-spin {
+>>>>>>> Updated Homepage:colony-explorer/src/App.css
+>>>>>>> Updated Homepage
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
