@@ -5,6 +5,7 @@ import logger from 'morgan';
 // Controllers
 import mainPageController from './controllers/mainPageController';
 import coloniesPageController from './controllers/coloniesPageController';
+import colonyPageController from './controllers/colonyPageController';
 import tokenController from './controllers/tokenController';
 import countsController from './controllers/countsController';
 
@@ -36,6 +37,14 @@ router.get('/time-series-data/', mainPageController.fetchTimeSeriesData);
 // Colonies page api routes
 router.get('/colonies/', coloniesPageController.getPageOfColonies);
 router.get('/colonies/:pageId', coloniesPageController.getPageOfColonies);
+
+//Colony page api routes
+router.get('/colony/address/:id', colonyPageController.fetchAddressFromEth);
+router.get('/colony/domain/', colonyPageController.fetchDomainFromEth);
+router.get('/colony/tasks/', colonyPageController.fetchTaskFromEth);
+router.get('/colony/reward-pot/:source', colonyPageController.fetchRewardPotFromEth);
+router.get('/colony/non-reward-pot/:source', colonyPageController.fetchNonRewardPotFromEth);
+router.get('/colony/token/', colonyPageController.fetchTokenFromEth);
 
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
