@@ -1,99 +1,65 @@
 import React, { Component } from 'react';
+import StatCard from './StatCard';
 
 class Colony extends Component {
 
+  state = {
+    address: '',
+    tokens: '',
+    totalDomainCount: '',
+    totalTaskCount: '',
+    totalRewardPot: '',
+    totalNonRewardPot: '',
+    topDomains: {
+      labels: [],
+      data: []
+    },
+    topTasks: {
+      labels: [],
+      data: []
+    }
+  };
+
+
+renderStatisticsFromEthereum = async () => {
+    const data = (await axios.get('/api/statistics/ethereum')).data;
+    this.setState({
+      totalColonyCount: data.totalColonyCount,
+      totalSkillCount: data.totalSkillCount,
+    });
+  };
+
+
   render() {
     return(
-      <div className= "section">
-      <div className="container">
+
+     <Container textAlign='center'>
+
         <h1>Colony {this.props.match.params.id}</h1>
-        <h2>Address:</h2>
-        <h3>Token:</h3>
-      </div>
-
-      <div className="container">
-
-      <div className="card">
-      <header className="card-header">
-        <p className="card-header-title">
-          Total # of Domains
-        </p>
-        <a href="#" className="card-header-icon" aria-label="more options">
-          <span className="icon">
-            <i className="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div className="card-content">
-        <div className="content">
-          This would be the number of colonies.
-          <a href="#">View All Domains</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-          <br/>
-          </div>
-          </div>
-          </div>
+        <h2>Address: {}</h2>
+        <h3>Token: {}</h3>
 
 
-        <div className="card">
-      <header className="card-header">
-        <p className="card-header-title">
-          Total # of Tasks
-        </p>
-        <a href="#" className="card-header-icon" aria-label="more options">
-          <span className="icon">
-            <i className="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div className="card-content">
-        <div className="content">
-          This would be the number of colonies.
-          <a href="#">View All Tasks</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-          <br/>
-          </div>
-          </div>
-          </div>
-
-
-          <div className="card">
-      <header className="card-header">
-        <p className="card-header-title">
-          Reward Pot
-        </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span className="icon">
-            <i className="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div className="card-content">
-        <div className="content">
-          This would be the reward pot.
-          <a href="#">Reward Pot</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-          <br/>
-          </div>
-          </div>
-          </div>
-
-      <div className="card">
-      <header className="card-header">
-        <p className="card-header-title">
-          Non-Reward Pot
-        </p>
-        <a href="#" className="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i className="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div className="card-content">
-        <div className="content">
-          This would be the non-reward pot
-          <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-          <br/>
-          </div>
-          </div>
-          </div>
+      <Grid columns={4} relaxed>
+          <StatCard
+            title="Total # of Domains"
+            value={ this.state.totalDomainCount }
+            buttonText="View All Domains"
+          />
+          <StatCard
+            title="Total # of Tasks"
+            value={ this.state.totalTask }
+            buttonText="View All Tasks"
+          />
+          <StatCard
+            title="Reward Pot"
+            value={ this.state.totalRewardPot }
+          />
+          <StatCard
+            title="Non-Reward Pot"
+            value={ this.state.totalNonRewardPot }
+          />
+        </Grid>
 
       <article className="message is-info">
         <div className="message-header">
@@ -115,8 +81,7 @@ class Colony extends Component {
         <a href="#">View All Tasks</a>. <a href="#">#css</a> <a href="#">#responsive</a>
       </article>
 
-      </div>
-      </div>
+    </Container>
 
     )
   }
