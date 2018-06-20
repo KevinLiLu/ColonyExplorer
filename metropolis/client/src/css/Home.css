@@ -25,6 +25,7 @@
 <<<<<<< HEAD:metropolis/client/src/css/Home.css
 <<<<<<< HEAD:metropolis/client/src/css/Home.css
 <<<<<<< HEAD:metropolis/client/src/css/Home.css
+<<<<<<< HEAD:metropolis/client/src/css/Home.css
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD:metropolis/client/src/Home.css
@@ -49,21 +50,34 @@
 @keyframes App-logo-spin {
 
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Updates More:metropolis/client/src/Home.css
 <<<<<<< HEAD:metropolis/client/src/Home.css
 @keyframes Home-logo-spin {
 =======
+=======
+
+@keyframes Home-logo-spin {
+
+>>>>>>> Update
 .logo{
   width: 200px;
   height: 75px;
-}
+ }
 
 .navBar {
   background-color: black;
+ }
 }
 
 @keyframes App-logo-spin {
+<<<<<<< HEAD:metropolis/client/src/css/Home.css
 >>>>>>> Updated Homepage:colony-explorer/src/App.css
 >>>>>>> Updated Homepage:metropolis/client/src/Home.css
+=======
+
+>>>>>>> Updates More:metropolis/client/src/Home.css
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
