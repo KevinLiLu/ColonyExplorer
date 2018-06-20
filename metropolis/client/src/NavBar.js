@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Form, Input, Menu } from 'semantic-ui-react';
+import { Button, Form, Icon, Input, Menu } from 'semantic-ui-react';
 
 class NavBar extends Component {
   render = () => {
@@ -11,12 +11,15 @@ class NavBar extends Component {
           </NavLink>
           <Menu.Menu position="right">
             <NavLink className="item" to="/manage">
+              <Icon name="edit" />
               Manage
             </NavLink>
             <NavLink className="item" to="/colonies">
+              <Icon name="users" />
               Colonies
             </NavLink>
             <NavLink className="item" to="/tasks">
+              <Icon name="tasks" />
               Tasks
             </NavLink>
             <Form className="item">
