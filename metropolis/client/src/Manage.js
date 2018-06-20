@@ -3,7 +3,7 @@ import { Button, Container, Form, Grid, Header, Icon, Message } from 'semantic-u
 import web3 from './ethereum/web3';
 import getColonyNetworkContract from './ethereum/iColonyNetworkContract';
 import getTokenContract from './ethereum/tokenContract';
-import DismissableMessage from './components/DismissableMessage';
+import ConfigurableMessage from './components/ConfigurableMessage';
 
 class Manage extends Component {
   state = {
@@ -16,6 +16,8 @@ class Manage extends Component {
     colonyAddress: '',
     loading: false,
     errorMessage: '',
+    messageTokenName: '',
+    messageTokenSymbol: '',
   };
 
   onSubmitCreateToken = async (event) => {
@@ -49,7 +51,11 @@ class Manage extends Component {
         from: accounts[0],
       });
 
-      this.setState({ tokenAddress: deployedToken.options.address });
+      this.setState({
+        tokenAddress: deployedToken.options.address,
+        messageTokenName: this.state.tokenName,
+        messageTokenSymbol: this.state.tokenSymbol,
+      });
     } catch (error) {
       this.setState({ errorMessage: error.message });
     }
@@ -92,7 +98,7 @@ class Manage extends Component {
     return (
       <Container style={{marginTop: 25}}>
 
-        <DismissableMessage
+        <ConfigurableMessage
           hidden={!!web3}
           iconName='warning circle'
           header='Could not detect web3'
@@ -109,7 +115,7 @@ class Manage extends Component {
           </Message.Content>
         </Message>
 
-        <DismissableMessage
+        <ConfigurableMessage
           hidden={!this.state.errorMessage}
           iconName='warning circle'
           header='Error!'
@@ -118,16 +124,16 @@ class Manage extends Component {
           success={false}
         />
 
-        <DismissableMessage
+        <ConfigurableMessage
           hidden={!this.state.tokenAddress}
           iconName='thumbs up outline'
           header='Token creation successful!'
-          body={`Token ${this.state.tokenName} ${this.state.tokenSymbol} deployed at ${this.state.tokenAddress}.`}
+          body={`Token ${this.state.messageTokenName} ${this.state.messageTokenSymbol} deployed at ${this.state.tokenAddress}.`}
           negative={false}
           success={true}
         />
 
-        <DismissableMessage
+        <ConfigurableMessage
           hidden={!this.state.colonyAddress}
           iconName='thumbs up outline'
           header='Colony creation successful!'
