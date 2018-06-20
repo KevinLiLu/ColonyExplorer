@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Grid } from 'semantic-ui-react';
 
-import './Home.css';
-import StatCard from './StatCard';
-import StatGraph from './StatGraph';
+import './css/Home.css';
+import StatCard from './components/StatCard';
+import StatGraph from './components/StatGraph';
 
 class Home extends Component {
   state = {
