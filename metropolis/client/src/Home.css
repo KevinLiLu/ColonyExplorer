@@ -22,23 +22,21 @@
   font-size: large;
 }
 
-<<<<<<< HEAD:metropolis/client/src/Home.css
-<<<<<<< HEAD:metropolis/client/src/Home.css
+
 @keyframes Home-logo-spin {
-=======
-=======
->>>>>>> 54c1d6958411c6381890818c92c6640ee56b37e9:colony-explorer/src/App.css
+
 .logo{
   width: 200px;
   height: 75px;
-}
+ }
 
 .navBar {
   background-color: black;
+ }
 }
 
 @keyframes App-logo-spin {
->>>>>>> Updated Homepage:colony-explorer/src/App.css
+
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
