@@ -25,6 +25,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7169b8173a7d4f657fedda382c9adc0024bca093
 <<<<<<< HEAD:metropolis/client/src/Home.css
 @keyframes Home-logo-spin {
 =======
@@ -33,6 +36,7 @@
 @keyframes Home-logo-spin {
 
 >>>>>>> Update
+<<<<<<< HEAD
 .logo{
   width: 200px;
   height: 75px;
@@ -52,10 +56,16 @@
 @keyframes Home-logo-spin {
 =======
 =======
+>>>>>>> 7169b8173a7d4f657fedda382c9adc0024bca093
+=======
 
 @keyframes Home-logo-spin {
 
+<<<<<<< HEAD
 >>>>>>> Update
+=======
+>>>>>>> c16679de17074cd5238f40d9e7f860a7ac7613db
+>>>>>>> 7169b8173a7d4f657fedda382c9adc0024bca093
 .logo{
   width: 200px;
   height: 75px;
@@ -68,11 +78,15 @@
 
 @keyframes App-logo-spin {
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Updated Homepage:colony-explorer/src/App.css
 >>>>>>> Updated Homepage
 =======
 
 >>>>>>> Update
+=======
+
+>>>>>>> 7169b8173a7d4f657fedda382c9adc0024bca093
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
