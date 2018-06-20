@@ -1,13 +1,13 @@
 {
   "mongo": {
-    "user": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "database": ""
+    "user": "kevin",
+    "password": "b34B#$GEgtrey",
+    "hostname": "ec2-18-217-242-3.us-east-2.compute.amazonaws.com",
+    "port": "27017",
+    "database": "data"
   },
   "ethereum": {
-    "network": "",
-    "privateKey": ""
+    "network": "rinkeby",
+    "privateKey": "0xa05f4fa31adfa2c7e0025b1e6d70a1458f993e85af11c00286512ebdd3ef2158"
   }
 }
