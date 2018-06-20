@@ -34,7 +34,7 @@ class Colony extends Component {
     this.renderDomainFromEthereum();
     this.renderTasksFromEthereum();
     this.renderRewardPotFromEthereum();
-    this.renderTokenFromEthereum();
+    this.renderTokensFromEthereum();
   };
 
 

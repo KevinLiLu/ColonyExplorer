@@ -48,7 +48,7 @@ module.exports.fetchTaskFromEth = async function(req, res) {
 module.exports.fetchRewardPotFromEth = async function(req, res) {
   let networkClient = await getNetworkClient();
 
-  let totalRewardPot = (await networkClient.getPotBalance.call({ 0, source }))
+  let totalRewardPot = (await networkClient.getPotBalance.call({ potId , source }))
 
   res.send({
     totalRewardPot
