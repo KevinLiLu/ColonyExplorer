@@ -1,4 +1,4 @@
-const config = require('../config.json').mongo;
+const config = require('../../config.json').mongo;
 const MongoClient = require('mongodb').MongoClient;
 
 const hostname = config.hostname;
@@ -30,18 +30,18 @@ findOne = async (collectionName, query, fields, sortByField) => {
   const mongoClient = await connectToMongo();
   const db = mongoClient.db(dbName);
   const collection = db.collection(collectionName);
-  const doc = await collection.findOne(query, fields);
+  const doc = await collection.findOne(query, {'fields': {_id: 0, ...fields}});
   return doc;
 };
 
 /*
 * Finds and updates one document.
 */
-updateOne = async (collectionName, query, entry) => {
+updateOne = async (collectionName, query, entry, upsert) => {
   const mongoClient = await connectToMongo();
   const db = mongoClient.db(dbName);
   const collection = db.collection(collectionName);
-  collection.updateOne(query, {$set: entry});
+  collection.updateOne(query, {$set: entry}, {upsert: upsert});
 }
 
 module.exports = {

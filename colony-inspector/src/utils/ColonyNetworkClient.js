@@ -1,10 +1,10 @@
 const { providers, Wallet } = require('ethers');
 const { default: EthersAdapter } = require('@colony/colony-js-adapter-ethers');
-const { default: NetworkLoader } = require('@colony/colony-contract-loader-network');
+const { default: NetworkLoader } = require('@colony/colony-js-contract-loader-network');
 
 const { default: ColonyNetworkClient } = require('@colony/colony-js-client');
 
-const config = require('../config.json').ethereum;
+const config = require('../../config.json').ethereum;
 const PRIVATE_KEY = config.privateKey;
 const NETWORK = config.network;
 

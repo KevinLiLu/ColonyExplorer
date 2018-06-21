@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@colony/colony-contract-loader-network": "^1.0.1",
-    "@colony/colony-js-adapter-ethers": "^1.4.1",
-    "@colony/colony-js-client": "^1.4.1",
+    "@colony/colony-js-adapter-ethers": "^1.5.0",
+    "@colony/colony-js-client": "^1.5.1",
+    "@colony/colony-js-contract-loader-network": "^1.0.3",
     "ethers": "^3.0.22",
     "moment": "^2.22.2",
     "mongodb": "^3.0.10"
