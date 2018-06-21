@@ -27,7 +27,8 @@ class Home extends Component {
     tsdTotalTaskCount: {
       labels: [],
       data: []
-    }
+    },
+    graphsLoading: false,
   };
 
   componentDidMount = () => {
@@ -35,34 +36,18 @@ class Home extends Component {
   }
 
   renderData = () => {
-    this.renderStatisticsFromEthereum();
-    this.renderStatisticsFromMongo();
     this.renderGraphsFromMongo();
   };
 
-  renderStatisticsFromMongo = async () => {
-    const data = (await axios.get('/api/statistics/mongo')).data;
-    this.setState({
-      totalDomainCount: data.totalDomainCount,
-      totalTaskCount: data.totalTaskCount,
-    });
-  };
-
-  renderStatisticsFromEthereum = async () => {
-    const data = (await axios.get('/api/statistics/ethereum')).data;
-    this.setState({
-      totalColonyCount: data.totalColonyCount,
-      totalSkillCount: data.totalSkillCount,
-    });
-  };
-
   renderGraphsFromMongo = async () => {
+    this.setState({ graphsLoading: true });
     const data = (await axios.get('/api/time-series-data/')).data;
     this.setState({
       tsdTotalColonyCount: data.totalColonyCount,
       tsdTotalSkillCount: data.totalSkillCount,
       tsdTotalDomainCount: data.totalDomainCount,
       tsdTotalTaskCount: data.totalTaskCount,
+      graphsLoading: true,
     });
   };
 
@@ -76,21 +61,25 @@ class Home extends Component {
             title="Total # of Colonies"
             value={this.state.totalColonyCount}
             buttonText="View All Colonies"
+            api="/api/network/count/colony"
           />
           <StatCard
             title="Total # of Tasks"
             value={this.state.totalTaskCount}
             buttonText="View All Tasks"
+            api="/api/network/count/task"
           />
           <StatCard
             title="Total # of Domains"
             value={this.state.totalDomainCount}
             buttonText="View All Domains"
+            api="/api/network/count/domain"
           />
           <StatCard
             title="Total # of Skills"
             value={this.state.totalSkillCount}
             buttonText="View All Skills"
+            api="/api/network/count/skill"
           />
         </Grid>
 
@@ -101,21 +90,25 @@ class Home extends Component {
             title="Total Colony Count (Past 7 Days)"
             labels={this.state.tsdTotalColonyCount.labels}
             data={this.state.tsdTotalColonyCount.data}
+            loading={this.state.graphsLoading}
           />
           <StatGraph
             title="Total Skill Count (Past 7 Days)"
             labels={this.state.tsdTotalSkillCount.labels}
             data={this.state.tsdTotalSkillCount.data}
+            loading={this.state.graphsLoading}
           />
           <StatGraph
             title="Total Domain Count (Past 7 Days)"
             labels={this.state.tsdTotalDomainCount.labels}
             data={this.state.tsdTotalDomainCount.data}
+            loading={this.state.graphsLoading}
           />
           <StatGraph
             title="Total Task Count (Past 7 Days)"
             labels={this.state.tsdTotalTaskCount.labels}
             data={this.state.tsdTotalTaskCount.data}
+            loading={this.state.graphsLoading}
           />
         </Grid>
       </Container>
