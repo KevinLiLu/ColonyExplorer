@@ -24,6 +24,17 @@ async function connectToMongo() {
 };
 
 /*
+* Searchs for multiple documents.
+*/
+export async function find(collectionName, query, fields, sortByField) {
+  const mongoClient = await connectToMongo();
+  const db = mongoClient.db(dbName);
+  const collection = db.collection(collectionName);
+  const docs = await collection.find(query, {'fields': {_id: 0, ...fields}}).toArray();
+  return docs;
+}
+
+/*
 * Finds and returns one document.
 */
 export async function findOne(collectionName, query, fields, sortByField) {
