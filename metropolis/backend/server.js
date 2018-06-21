@@ -6,6 +6,7 @@ import logger from 'morgan';
 import mainPageController from './controllers/mainPageController';
 import coloniesPageController from './controllers/coloniesPageController';
 import tokenController from './controllers/tokenController';
+import countsController from './controllers/countsController';
 
 // and create our instances
 const app = express();
@@ -20,6 +21,12 @@ app.use(logger('dev'));
 
 // Use our router configuration when we call /api
 app.use('/api', router);
+
+// Counts calls
+router.get('/network/count/domain', countsController.getNetworkDomainCount);
+router.get('/network/count/task', countsController.getNetworkTaskCount);
+router.get('/network/count/colony', countsController.getNetworkColonyCount);
+router.get('/network/count/skill', countsController.getNetworkSkillCount);
 
 // Home page api routes
 router.get('/statistics/mongo', mainPageController.fetchStatisticsFromMongo);
