@@ -31,6 +31,8 @@ updateColoniesCollection = async (networkClient, totalColonyCount) => {
   // 1. First get previous totalColonyCount from colony-inspector-metadata
   const prevTotalColonyCount = (await findOne(COLLECTION_INSPECTOR_METADATA, {'name': 'colony-inspector-metadata'}, {totalColonyCount: 1}, '')).totalColonyCount;
 
+  let count = 0;
+
   // 2. For each missing colony, upsert the colony data to Mongo
   for (var i = prevTotalColonyCount + 1; i < totalColonyCount + 1; i++) {
     // a. Get token info
@@ -49,8 +51,9 @@ updateColoniesCollection = async (networkClient, totalColonyCount) => {
     // c. Save data to mongo and update totalColonyCount in colony-inspector-metadata
     await updateOne(COLLECTION_COLONIES, {id: i}, doc, true);
     await updateOne(COLLECTION_INSPECTOR_METADATA, {name: 'colony-inspector-metadata'}, {totalColonyCount: i}, true);
+    count ++;
   }
-  console.log('Done updating colonies collection!');
+  console.log(`Done updating ${count} colonies collection!`);
 };
 
 
@@ -113,11 +116,11 @@ runOnce = async () => {
   const totalColonyCount = (await networkClient.getColonyCount.call()).count;
   const totalSkillCount = (await networkClient.getSkillCount.call()).count;
 
-  console.log(`${totalColonyCount} ${totalSkillCount}`);
+  // Update colonies collection
   updateColoniesCollection(networkClient, totalColonyCount);
 
+  // Update and calculate colony statistics
   const { totalDomainCount, totalTaskCount } = await fetchAndSaveColonyData(networkClient, totalColonyCount);
-  console.log(`${totalDomainCount} ${totalTaskCount}`);
 
   saveTimeSeriesDataIfNextDay(totalColonyCount, totalTaskCount, totalDomainCount, totalSkillCount);
 };
