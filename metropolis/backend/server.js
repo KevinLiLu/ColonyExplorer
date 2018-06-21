@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 
 // Controllers
-import mainPageController from './controllers/mainPageController';
 import coloniesPageController from './controllers/coloniesPageController';
 import tokenController from './controllers/tokenController';
 import countsController from './controllers/countsController';
