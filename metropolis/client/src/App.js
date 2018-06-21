@@ -11,6 +11,7 @@ import Colony from './Colony';
 import Tasks from './Tasks';
 import Task from './Task';
 import Manage from './Manage';
+import Skills from './Skills';
 
 class App extends Component {
   render = () => {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path="/tasks" component={Tasks}/>
             <Route path="/task/:id" component={Task}/>
             <Route path="/manage" component={Manage}/>
+            <Route path="/skills" component={Skills}/>
           </div>
         </div>
       </Router>
