@@ -30,25 +30,27 @@ class Colony extends Component {
 
 
   renderData = () => {
-    // this.renderAddressFromEthereum();
+    this.renderAddressFromEthereum();
     this.renderDomainFromEthereum();
     // this.renderTasksFromEthereum();
     // this.renderRewardPotFromEthereum();
-    // this.renderTokensFromEthereum();
+    this.renderTokensFromEthereum();
   };
 
 
-// renderAddressFromEthereum = async () => {
-//     const data = (await axios.get(`/api/colony/address/${this.props.match.params.id}`));
-//     this.setState({
-//       address: data.address
-//     });
-//   };
+renderAddressFromEthereum = async () => {
+    const res = (await axios.get(`/api/colony/address/${this.props.match.params.id}`));
+    this.setState({
+      address: res.data.address
+    });
+  };
 
 renderDomainFromEthereum = async () => {
-    const data = (await axios.get('/api/colony/domain/'));
+    const res = (await axios.get(`/api/colony/domain/${this.props.match.params.id}`));
+    console.log()
+
     this.setState({
-      totalDomainCount: data.totalDomainCount
+      totalDomainCount: res.data.totalDomainCount.count
     });
   };
 
@@ -73,12 +75,13 @@ renderDomainFromEthereum = async () => {
 //     });
 //   };
 
-// renderTokensFromEthereum = async () => {
-//     const data = (await axios.get('/api/colony/token')).token;
-//     this.setState({
-//       token: data
-//     });
-//   };
+renderTokensFromEthereum = async () => {
+    const res = (await axios.get(`/api/token/colonyId/${this.props.match.params.id}`));
+    console.log(res)
+    this.setState({
+      token: res.data.name + ' ' + res.data.symbol
+    });
+  };
 
   render() {
     return(
