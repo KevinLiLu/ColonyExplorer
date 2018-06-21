@@ -7,6 +7,7 @@ import coloniesPageController from './controllers/coloniesPageController';
 import tokenController from './controllers/tokenController';
 import countsController from './controllers/countsController';
 import timeSeriesDataController from './controllers/timeSeriesDataController';
+import skillsPageController from './controllers/skillsPageController';
 
 // and create our instances
 const app = express();
@@ -34,6 +35,10 @@ router.get('/time-series-data/:name', timeSeriesDataController.getTimeSeriesData
 // Colonies page api routes
 router.get('/colonies/', coloniesPageController.getPageOfColonies);
 router.get('/colonies/:pageId', coloniesPageController.getPageOfColonies);
+
+// Skills
+router.get('/skills/', skillsPageController.getPageOfSkills);
+router.get('/skills/:pageId', skillsPageController.getPageOfSkills);
 
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
