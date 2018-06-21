@@ -21,7 +21,7 @@ class Colonies extends Component {
   renderData = async () => {
     this.setState({ loading: true });
     const data = (await axios.get(`/api/colonies/${this.state.pageId}`));
-    const totalColonyCount = ((await axios.get('/api/statistics/ethereum')).data).totalColonyCount;
+    const { totalColonyCount } = (await axios.get('/api/network/count/colony')).data;
 
     if (data.data.error) {
       this.setState({ error: data.data.error });
