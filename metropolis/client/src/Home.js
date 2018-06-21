@@ -41,24 +41,28 @@ class Home extends Component {
             value={this.state.totalColonyCount}
             buttonText="View All Colonies"
             api="/api/network/count/colony"
+            linkTo="/colonies"
           />
           <StatCard
             title="Total # of Tasks"
             value={this.state.totalTaskCount}
             buttonText="View All Tasks"
             api="/api/network/count/task"
+            linkTo="/tasks"
           />
           <StatCard
             title="Total # of Domains"
             value={this.state.totalDomainCount}
             buttonText="View All Domains"
             api="/api/network/count/domain"
+            linkTo="/domains"
           />
           <StatCard
             title="Total # of Skills"
             value={this.state.totalSkillCount}
             buttonText="View All Skills"
             api="/api/network/count/skill"
+            linkTo="/skills"
           />
         </Grid>
 

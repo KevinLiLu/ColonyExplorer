@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom';
 import { Button, Grid, Loader, Segment, Statistic, } from 'semantic-ui-react';
 import axios from 'axios';
 
@@ -34,9 +35,11 @@ class StatCard extends Component {
           </Statistic>
         </Segment>
         <Segment basic>
+        <NavLink to={this.props.linkTo}>
           <Button>
             {this.props.buttonText}
           </Button>
+        </NavLink>
         </Segment>
       </Grid.Column>
     );
