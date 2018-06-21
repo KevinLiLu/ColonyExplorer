@@ -26,59 +26,59 @@ class Colony extends Component {
 
   componentDidMount = () => {
     this.renderData();
-  }
+  };
 
 
   renderData = () => {
-    this.renderAddressFromEthereum();
+    // this.renderAddressFromEthereum();
     this.renderDomainFromEthereum();
     this.renderTasksFromEthereum();
-    this.renderRewardPotFromEthereum();
-    this.renderTokensFromEthereum();
+    // this.renderRewardPotFromEthereum();
+    // this.renderTokensFromEthereum();
   };
 
 
-renderAddressFromEthereum = async () => {
-    const data = (await axios.get('/colony/address/:id')).data;
-    this.setState({
-      address: data.address
-    });
-  };
+// renderAddressFromEthereum = async () => {
+//     const data = (await axios.get(`/api/colony/address/${this.props.match.params.id}`));
+//     this.setState({
+//       address: data.address
+//     });
+//   };
 
 renderDomainFromEthereum = async () => {
-    const data = (await axios.get('/colony/domain/')).data;
+    const data = (await axios.get('/api/colony/domain/'));
     this.setState({
-      totalDomainCount: data.totalDomainCount,
+      totalDomainCount: data.totalDomainCount
     });
   };
 
 renderTasksFromEthereum = async () => {
-    const data = (await axios.get('/colony/skills')).data;
+    const data = (await axios.get('/api/colony/tasks'));
     this.setState({
-      totalSkillCount: data.totalTaskCount,
+      totalTaskCount: data.totalTaskCount
     });
   };
 
-renderRewardPotFromEthereum = async () => {
-    const data = (await axios.get('/colony/reward-pot')).data;
-    this.setState({
-      totalRewardPot: data.totalRewardPot,
-    });
-  };
+// renderRewardPotFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/reward-pot')).totalRewardPot;
+//     this.setState({
+//       totalRewardPot: data
+//     });
+//   };
 
-renderNonRewardPotFromEthereum = async () => {
-    const data = (await axios.get('/colony/non-reward-pot')).data;
-    this.setState({
-      totalNonRewardPot: data.totalNonRewardPot
-    });
-  };
+// renderNonRewardPotFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/non-reward-pot')).totalNonRewardPot;
+//     this.setState({
+//       totalNonRewardPot: data
+//     });
+//   };
 
-renderTokensFromEthereum = async () => {
-    const data = (await axios.get('/colony/token')).data;
-    this.setState({
-      token: data.token,
-    });
-  };
+// renderTokensFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/token')).token;
+//     this.setState({
+//       token: data
+//     });
+//   };
 
   render() {
     return(
