@@ -32,6 +32,7 @@
 @keyframes Home-logo-spin {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @keyframes Home-logo-spin {
 
 >>>>>>> Update
@@ -61,6 +62,8 @@
 @keyframes Home-logo-spin {
 
 >>>>>>> Update
+=======
+>>>>>>> 2d52dd1232f2ecede274ba50d1415e6a4e151a18
 .logo{
   width: 200px;
   height: 75px;
@@ -73,6 +76,7 @@
 
 @keyframes App-logo-spin {
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Updated Homepage:colony-explorer/src/App.css
 >>>>>>> Updated Homepage
 =======
@@ -80,6 +84,9 @@
 >>>>>>> Update
 =======
 >>>>>>> Colony Page
+=======
+
+>>>>>>> 2d52dd1232f2ecede274ba50d1415e6a4e151a18
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
