@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Container, Grid } from 'semantic-ui-react';
 
 import './css/Home.css';
@@ -29,26 +28,6 @@ class Home extends Component {
       data: []
     },
     graphsLoading: false,
-  };
-
-  componentDidMount = () => {
-    this.renderData();
-  }
-
-  renderData = () => {
-    this.renderGraphsFromMongo();
-  };
-
-  renderGraphsFromMongo = async () => {
-    this.setState({ graphsLoading: true });
-    const data = (await axios.get('/api/time-series-data/')).data;
-    this.setState({
-      tsdTotalColonyCount: data.totalColonyCount,
-      tsdTotalSkillCount: data.totalSkillCount,
-      tsdTotalDomainCount: data.totalDomainCount,
-      tsdTotalTaskCount: data.totalTaskCount,
-      graphsLoading: true,
-    });
   };
 
   render = () => {
@@ -91,24 +70,28 @@ class Home extends Component {
             labels={this.state.tsdTotalColonyCount.labels}
             data={this.state.tsdTotalColonyCount.data}
             loading={this.state.graphsLoading}
+            name="total-colony-count"
           />
           <StatGraph
             title="Total Skill Count (Past 7 Days)"
             labels={this.state.tsdTotalSkillCount.labels}
             data={this.state.tsdTotalSkillCount.data}
             loading={this.state.graphsLoading}
+            name="total-skill-count"
           />
           <StatGraph
             title="Total Domain Count (Past 7 Days)"
             labels={this.state.tsdTotalDomainCount.labels}
             data={this.state.tsdTotalDomainCount.data}
             loading={this.state.graphsLoading}
+            name="total-domain-count"
           />
           <StatGraph
             title="Total Task Count (Past 7 Days)"
             labels={this.state.tsdTotalTaskCount.labels}
             data={this.state.tsdTotalTaskCount.data}
             loading={this.state.graphsLoading}
+            name="total-task-count"
           />
         </Grid>
       </Container>

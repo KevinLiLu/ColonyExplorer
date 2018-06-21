@@ -7,6 +7,7 @@ import mainPageController from './controllers/mainPageController';
 import coloniesPageController from './controllers/coloniesPageController';
 import tokenController from './controllers/tokenController';
 import countsController from './controllers/countsController';
+import timeSeriesDataController from './controllers/timeSeriesDataController';
 
 // and create our instances
 const app = express();
@@ -29,9 +30,7 @@ router.get('/network/count/colony', countsController.getNetworkColonyCount);
 router.get('/network/count/skill', countsController.getNetworkSkillCount);
 
 // Home page api routes
-router.get('/statistics/mongo', mainPageController.fetchStatisticsFromMongo);
-router.get('/statistics/ethereum', mainPageController.fetchStatisticsFromEthereum);
-router.get('/time-series-data/', mainPageController.fetchTimeSeriesData);
+router.get('/time-series-data/:name', timeSeriesDataController.getTimeSeriesData);
 
 // Colonies page api routes
 router.get('/colonies/', coloniesPageController.getPageOfColonies);
