@@ -26,6 +26,10 @@ class NavBar extends Component {
               <Icon name="wrench" />
               Skills
             </NavLink>
+            <NavLink className="item" to="/domains">
+              <Icon name="boxes" />
+              Domains
+            </NavLink>
             <Form className="item">
               <Input style={{ marginRight: '10px' }}
                 value=""
