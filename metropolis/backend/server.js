@@ -33,11 +33,11 @@ router.get('/colonies/:pageId', coloniesPageController.getPageOfColonies);
 
 //Colony page api routes
 router.get('/colony/address/:id', colonyPageController.fetchAddressFromEth);
-// router.get('/colony/domain', colonyPageController.fetchDomainFromEth);
+router.get('/colony/domain/:id', colonyPageController.fetchDomainFromEth);
 // router.get('/colony/tasks', colonyPageController.fetchTaskFromEth);
 // router.get('/colony/reward-pot/:source', colonyPageController.fetchRewardPotFromEth);
 // router.get('/colony/non-reward-pot:source', colonyPageController.fetchNonRewardPotFromEth);
-router.get('/colony/token/', colonyPageController.fetchTokenFromEth);
+// router.get('/colony/token/:id', colonyPageController.fetchTokenfromEth);
 
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
