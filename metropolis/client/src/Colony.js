@@ -32,7 +32,7 @@ class Colony extends Component {
   renderData = () => {
     // this.renderAddressFromEthereum();
     this.renderDomainFromEthereum();
-    this.renderTasksFromEthereum();
+    // this.renderTasksFromEthereum();
     // this.renderRewardPotFromEthereum();
     // this.renderTokensFromEthereum();
   };
@@ -52,12 +52,12 @@ renderDomainFromEthereum = async () => {
     });
   };
 
-renderTasksFromEthereum = async () => {
-    const data = (await axios.get('/api/colony/tasks'));
-    this.setState({
-      totalTaskCount: data.totalTaskCount
-    });
-  };
+// renderTasksFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/tasks'));
+//     this.setState({
+//       totalTaskCount: data.totalTaskCount
+//     });
+//   };
 
 // renderRewardPotFromEthereum = async () => {
 //     const data = (await axios.get('/api/colony/reward-pot')).totalRewardPot;
