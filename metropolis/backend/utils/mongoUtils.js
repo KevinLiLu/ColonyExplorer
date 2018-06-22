@@ -26,11 +26,11 @@ async function connectToMongo() {
 /*
 * Searchs for multiple documents.
 */
-export async function find(collectionName, query, fields, sortByField) {
+export async function find(collectionName, query, fields, sortByField, skip, limit) {
   const mongoClient = await connectToMongo();
   const db = mongoClient.db(dbName);
   const collection = db.collection(collectionName);
-  const docs = await collection.find(query, {'fields': {_id: 0, ...fields}}).toArray();
+  const docs = await collection.find(query, {'fields': {_id: 0, ...fields}}).skip(skip).limit(limit).toArray();
   return docs;
 }
 
