@@ -44,7 +44,7 @@ class Tasks extends Component {
         skillId, specificationHash
       } = task;
       return (
-        <Table.Row key={skillId || Math.random()}>
+        <Table.Row key={Math.random()}>
           <Table.Cell>
             <NavLink className="item" to={`/colony/${colonyId}`}>
               {colonyId}
