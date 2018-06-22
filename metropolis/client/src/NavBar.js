@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Form, Icon, Input, Menu } from 'semantic-ui-react';
+import { Form, Icon, Menu } from 'semantic-ui-react';
+
+import axios from 'axios';
+
+import {
+	withRouter
+} from 'react-router-dom';
 
 class NavBar extends Component {
+  state = {
+    searchInput: '',
+  }
+
+  submitSearch = async (event) => {
+    event.preventDefault();
+
+    let response = await axios.get(`/api/colony/id/${this.state.searchInput}`);
+    if (response.data.id) {
+      this.props.history.push(`/colony/${response.data.id}`);
+    }
+    else {
+      this.props.history.push(`/invalid`);
+    }
+  };
+
   render = () => {
     return (
         <Menu>
@@ -30,13 +52,12 @@ class NavBar extends Component {
               <Icon name="boxes" />
               Domains
             </NavLink>
-            <Form className="item">
-              <Input style={{ marginRight: '10px' }}
-                value=""
+            <Form className="item" onSubmit={this.submitSearch}>
+              <Form.Input style={{paddingRight: 10}}
+                placeholder='Search Colony Address'
+                value={this.state.searchInput}
+                onChange={event => this.setState({ searchInput: event.target.value })}
               />
-              <Button primary>
-                Search
-              </Button>
             </Form>
           </Menu.Menu>
         </Menu>
@@ -44,4 +65,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

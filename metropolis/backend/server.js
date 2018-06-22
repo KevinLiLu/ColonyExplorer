@@ -71,6 +71,8 @@ router.get('/colony/task/:id', colonyPageController.fetchTaskFromEth);
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
 
+router.get('/colony/id/:address', colonyPageController.getColonyId);
+
 // Pot data
 // router.get('/reward-pot/:colonyId', potsController.getRewardPotBalances);
 // router.get('/non-reward-pot/:colonyId', potsController.getNonRewardPotsBalances);
