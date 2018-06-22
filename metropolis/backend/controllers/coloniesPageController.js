@@ -20,7 +20,7 @@ module.exports.getPageOfColonies = async function(req, res) {
         endId = startId + PAGE_SIZE - 1;
 
     const colonyIdsArray = getArrayOfRange(startId, endId);
-    const colonies = await find('colonies', {'id':{$in:colonyIdsArray}}, {}, '');
+    const colonies = await find('colonies', {'id':{$in:colonyIdsArray}}, {}, '', 0, 0);
 
     res.send({
       colonies,
