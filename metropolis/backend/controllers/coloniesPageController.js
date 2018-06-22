@@ -1,4 +1,3 @@
-import getNetworkClient from '../utils/colonyNetworkClient';
 import { find, findOne } from '../utils/mongoUtils';
 import { getTokenInfo } from '../utils/tokenUtils';
 import getArrayOfRange from '../utils/arrayUtils';
@@ -13,8 +12,6 @@ let PAGE_SIZE = 10;
 */
 module.exports.getPageOfColonies = async function(req, res) {
   try {
-    let networkClient = await getNetworkClient();
-
     let pageId = req.params.pageId || 1;
     let startId = (pageId - 1) * 10 + 1,
         endId = startId + PAGE_SIZE - 1;
