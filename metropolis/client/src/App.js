@@ -15,6 +15,7 @@ import Skills from './Skills';
 import Domains from './Domains';
 import Skill from './Skill';
 import Domain from './Domain';
+import Invalid from './Invalid';
 
 class App extends Component {
   render = () => {
@@ -25,6 +26,7 @@ class App extends Component {
           <div className="content">
             <Route exact path="/" component={Home}/>
             <Route path="/colonies" component={Colonies}/>
+            <Route path="/invalid" component={Invalid}/>
             <Route path="/colony/:id" component={Colony}/>
             <Route path="/tasks" component={Tasks}/>
             <Route path="/task/:colonyId/:taskId" component={Task}/>
