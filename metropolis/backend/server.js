@@ -43,10 +43,12 @@ router.get('/skills/', skillsPageController.getPageOfSkills);
 router.get('/skills/:pageId', skillsPageController.getPageOfSkills);
 
 // Domains
+router.get('/domains/ethereum/:colonyId/:startId/:endId?', domainsPageController.getDomainsFromEthNetwork);
 router.get('/domains/', domainsPageController.getPageOfDomains);
 router.get('/domains/:pageId', domainsPageController.getPageOfDomains);
 
 // Tasks
+router.get('/tasks/ethereum/:colonyId/:startId/:endId?', tasksPageController.getTasksFromEthNetwork);
 router.get('/tasks/', tasksPageController.getPageOfTasks);
 router.get('/tasks/:pageId', tasksPageController.getPageOfTasks);
 
