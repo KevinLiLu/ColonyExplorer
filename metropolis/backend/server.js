@@ -10,6 +10,7 @@ import timeSeriesDataController from './controllers/timeSeriesDataController';
 import skillsPageController from './controllers/skillsPageController';
 import domainsPageController from './controllers/domainsPageController';
 import tasksPageController from './controllers/tasksPageController';
+import taskPageController from './controllers/taskPageController';
 
 // and create our instances
 const app = express();
@@ -47,7 +48,10 @@ router.get('/domains/ethereum/:colonyId/:startId/:endId?', domainsPageController
 router.get('/domains/', domainsPageController.getPageOfDomains);
 router.get('/domains/:pageId', domainsPageController.getPageOfDomains);
 
-// Tasks
+// Task page
+router.get('/task/:colonyId/:taskId', taskPageController.getTaskDetailsFromEthNetwork);
+
+// Tasks page
 router.get('/tasks/ethereum/:colonyId/:startId/:endId?', tasksPageController.getTasksFromEthNetwork);
 router.get('/tasks/', tasksPageController.getPageOfTasks);
 router.get('/tasks/:pageId', tasksPageController.getPageOfTasks);
