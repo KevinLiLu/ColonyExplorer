@@ -46,6 +46,7 @@ module.exports.getDomainsFromEthNetwork = async function(req, res) {
 
     for (var domainId = parseInt(startId); domainId < parseInt(endId) + 1 && domainId < totalDomainCount + 1; domainId++) {
       let domain = await colonyClient.getDomain.call({ domainId });
+      domain.domainId = domainId;
       response.domains.push(domain);
     }
   } catch (error) {
