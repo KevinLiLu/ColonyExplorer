@@ -10,6 +10,7 @@ class Colony extends Component {
   state = {
     address: '',
     token: '',
+    finishedLoading: false,
     totalDomainCount: '',
     totalTaskCount: '',
     totalRewardPot: '',
@@ -46,6 +47,8 @@ renderStatisticsFromEthereum = async () => {
     // this.renderTasksFromEthereum();
     // this.renderRewardPotFromEthereum();
     this.renderTokensFromEthereum();
+    this.renderTokenListFromEthereum();
+    this.renderDomainListFromEthereum();
   };
 
 
@@ -58,7 +61,7 @@ renderAddressFromEthereum = async () => {
 
 renderDomainFromEthereum = async () => {
     const res = (await axios.get(`/api/colony/domain/${this.props.match.params.id}`));
-    console.log()
+    console.log('this is Domain', res.data.totalDomainCount.count)
 
     this.setState({
       totalDomainCount: res.data.totalDomainCount.count
@@ -88,11 +91,23 @@ renderDomainFromEthereum = async () => {
 
 renderTokensFromEthereum = async () => {
     const res = (await axios.get(`/api/token/colonyId/${this.props.match.params.id}`));
-    console.log(res)
+    console.log('this is tokens', res)
     this.setState({
       token: res.data.name + ' ' + res.data.symbol
     });
   };
+
+renderTokenListFromEthereum = async () => {
+  const res = (await axios.get(`/api/tasks/ethereum/${this.props.match.params.id}/1/10`))
+  console.log('this is a list of Tokens', res)
+
+};
+
+renderDomainListFromEthereum = async () => {
+  const res = (await axios.get(`/api/domains/ethereum/${this.props.match.params.id}/1/10`))
+  console.log('this is a list of Domains', res)
+
+};
 
   render() {
     return(
@@ -109,19 +124,28 @@ renderTokensFromEthereum = async () => {
             title="Total # of Domains"
             value={ this.state.totalDomainCount }
             buttonText="View All Domains"
+            api="/api/colony/domain/${this.props.match.params.id}"
+            linkTo="/domains"
+            loading={ this.state.finishedLoading }
           />
           <StatCard
             title="Total # of Tasks"
             value={ this.state.totalTask }
             buttonText="View All Tasks"
+            api="/api/colony/task/:id"
+            linkTo="/tasks"
           />
           <StatCard
             title="Reward Pot"
             value={ this.state.totalRewardPot }
+            api="/api/colony/reward-pot/:id"
+            linkTo="/domain"
           />
           <StatCard
             title="Non-Reward Pot"
             value={ this.state.totalNonRewardPot }
+            api="/api/colony/domain/:id"
+            linkTo="/domain"
           />
         </Grid>
 
