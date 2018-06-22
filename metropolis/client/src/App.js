@@ -13,6 +13,8 @@ import Task from './Task';
 import Manage from './Manage';
 import Skills from './Skills';
 import Domains from './Domains';
+import Skill from './Skill';
+import Domain from './Domain';
 
 class App extends Component {
   render = () => {
@@ -28,7 +30,9 @@ class App extends Component {
             <Route path="/task/:colonyId/:taskId" component={Task}/>
             <Route path="/manage" component={Manage}/>
             <Route path="/skills" component={Skills}/>
+            <Route path="/skill/:skillId" component={Skill}/>
             <Route path="/domains" component={Domains}/>
+            <Route path="/domain/:colonyId/:domainId" component={Domain}/>
           </div>
         </div>
       </Router>
