@@ -11,6 +11,7 @@ const COLLECTION_TIME_SERIES_DATA = 'time-series-data';
 const COLLECTION_INSPECTOR_METADATA = 'colony-inspector-metadata';
 const COLLECTION_COLONIES = 'colonies';
 const COLLECTION_TASKS = 'tasks';
+const COLLECTION_DOMAINS = 'domains';
 
 // general-store data keys
 const KEY_TOTAL_DOMAIN_COUNT = 'total-domain-count';
@@ -77,6 +78,13 @@ fetchAndSaveColonyData = async (networkClient, totalColonyCount) => {
       let task = await colonyClient.getTask.call({ taskId });
       task['colonyId'] = colonyId;
       await updateOne(COLLECTION_TASKS, {'colonyId': colonyId, id: task.id, 'domainId': task.domainId}, task, true);
+    }
+
+    // Save domain data to Mongo
+    for (var domainId = 1; domainId < domainCount + 1; domainId++) {
+      let domain = await colonyClient.getDomain.call({ domainId });
+      domain['colonyId'] = colonyId;
+      await updateOne(COLLECTION_DOMAINS, { colonyId, domainId }, domain, true);
     }
 
     // [ADVANCED] TODO: Pot balances
