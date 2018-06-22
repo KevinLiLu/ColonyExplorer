@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import axios from 'axios';
+import { Container, Grid } from 'semantic-ui-react';
+
+>>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
+>>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
 import StatCard from './StatCard';
 
 class Colony extends Component {
 
+<<<<<<< HEAD
   state = {
     address: '',
     tokens: '',
+=======
+<<<<<<< HEAD
+  state = {
+    address: '',
+    tokens: '',
+=======
+
+  state = {
+    address: '',
+    token: '',
+>>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
+>>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
     totalDomainCount: '',
     totalTaskCount: '',
     totalRewardPot: '',
@@ -20,6 +42,10 @@ class Colony extends Component {
     }
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
 
 renderStatisticsFromEthereum = async () => {
     const data = (await axios.get('/api/statistics/ethereum')).data;
@@ -29,6 +55,69 @@ renderStatisticsFromEthereum = async () => {
     });
   };
 
+<<<<<<< HEAD
+=======
+=======
+  componentDidMount = () => {
+    this.renderData();
+  };
+
+
+  renderData = () => {
+    this.renderAddressFromEthereum();
+    this.renderDomainFromEthereum();
+    // this.renderTasksFromEthereum();
+    // this.renderRewardPotFromEthereum();
+    this.renderTokensFromEthereum();
+  };
+
+
+renderAddressFromEthereum = async () => {
+    const res = (await axios.get(`/api/colony/address/${this.props.match.params.id}`));
+    this.setState({
+      address: res.data.address
+    });
+  };
+
+renderDomainFromEthereum = async () => {
+    const res = (await axios.get(`/api/colony/domain/${this.props.match.params.id}`));
+    console.log()
+
+    this.setState({
+      totalDomainCount: res.data.totalDomainCount.count
+    });
+  };
+
+// renderTasksFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/tasks'));
+//     this.setState({
+//       totalTaskCount: data.totalTaskCount
+//     });
+//   };
+
+// renderRewardPotFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/reward-pot')).totalRewardPot;
+//     this.setState({
+//       totalRewardPot: data
+//     });
+//   };
+
+// renderNonRewardPotFromEthereum = async () => {
+//     const data = (await axios.get('/api/colony/non-reward-pot')).totalNonRewardPot;
+//     this.setState({
+//       totalNonRewardPot: data
+//     });
+//   };
+
+renderTokensFromEthereum = async () => {
+    const res = (await axios.get(`/api/token/colonyId/${this.props.match.params.id}`));
+    console.log(res)
+    this.setState({
+      token: res.data.name + ' ' + res.data.symbol
+    });
+  };
+>>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
+>>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
 
   render() {
     return(
@@ -36,8 +125,18 @@ renderStatisticsFromEthereum = async () => {
      <Container textAlign='center'>
 
         <h1>Colony {this.props.match.params.id}</h1>
+<<<<<<< HEAD
         <h2>Address: {}</h2>
         <h3>Token: {}</h3>
+=======
+<<<<<<< HEAD
+        <h2>Address: {}</h2>
+        <h3>Token: {}</h3>
+=======
+        <h2>Address: {this.state.address}</h2>
+        <h3>Token: {this.state.token}</h3>
+>>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
+>>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
 
 
       <Grid columns={4} relaxed>
