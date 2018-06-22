@@ -14,8 +14,9 @@ class StatCard extends Component {
   };
 
   renderData = async () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true })
     const response = (await axios.get(this.props.api));
+
     this.setState({
       value: Object.values(response.data)[0],
       loading: false,

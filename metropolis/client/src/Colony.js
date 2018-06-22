@@ -122,17 +122,18 @@ renderDomainListFromEthereum = async () => {
       <Grid columns={4} relaxed>
           <StatCard
             title="Total # of Domains"
-            value={ this.state.totalDomainCount }
+
             buttonText="View All Domains"
-            api="/api/colony/domain/${this.props.match.params.id}"
+            api={`/api/colony/domain/${this.props.match.params.id}`}
             linkTo="/domains"
-            loading={ this.state.finishedLoading }
+
+
           />
           <StatCard
             title="Total # of Tasks"
             value={ this.state.totalTask }
             buttonText="View All Tasks"
-            api="/api/colony/task/:id"
+            api="/api/colony/task/id"
             linkTo="/tasks"
           />
           <StatCard
