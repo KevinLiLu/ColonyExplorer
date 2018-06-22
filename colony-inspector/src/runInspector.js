@@ -58,6 +58,7 @@ updateColoniesCollection = async (networkClient, totalColonyCount) => {
 
 
 fetchAndSaveColonyData = async (networkClient, totalColonyCount) => {
+  console.log(`Crawling all colonies to calculate statistics... ${moment().format()}`);
   // Crawl all the colonies to calculate statistics
   var totalDomainCount = 0, totalTaskCount = 0;
 
@@ -73,7 +74,7 @@ fetchAndSaveColonyData = async (networkClient, totalColonyCount) => {
     // [ADVANCED] TODO: Pot balances
   }
 
-  console.log(`total-domain-count: ${totalDomainCount}, total-task-count: ${totalTaskCount}, total-colony-count: ${totalColonyCount}`);
+  console.log(`Finished calculating statistics ${moment().format()}: total-domain-count: ${totalDomainCount}, total-task-count: ${totalTaskCount}, total-colony-count: ${totalColonyCount}`);
 
   // Save statistics to general-store
   updateOne(COLLECTION_STATISTICS, {'name':'statistics'}, {[KEY_TOTAL_DOMAIN_COUNT]: totalDomainCount}, false);
@@ -117,12 +118,12 @@ runOnce = async () => {
   const totalSkillCount = (await networkClient.getSkillCount.call()).count;
 
   // Update colonies collection
-  updateColoniesCollection(networkClient, totalColonyCount);
+  await updateColoniesCollection(networkClient, totalColonyCount);
 
   // Update and calculate colony statistics
   const { totalDomainCount, totalTaskCount } = await fetchAndSaveColonyData(networkClient, totalColonyCount);
 
-  saveTimeSeriesDataIfNextDay(totalColonyCount, totalTaskCount, totalDomainCount, totalSkillCount);
+  await saveTimeSeriesDataIfNextDay(totalColonyCount, totalTaskCount, totalDomainCount, totalSkillCount);
 };
 
 setInterval(runOnce, 60000);
