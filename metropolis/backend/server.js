@@ -14,6 +14,7 @@ import taskPageController from './controllers/taskPageController';
 import skillPageController from './controllers/skillPageController';
 import potsController from './controllers/potsController';
 import domainPageController from './controllers/domainPageController';
+import colonyPageController from './controllers/colonyPageController';
 
 // and create our instances
 const app = express();
@@ -62,6 +63,11 @@ router.get('/task/:colonyId/:taskId', taskPageController.getTaskDetailsFromEthNe
 router.get('/tasks/ethereum/:colonyId/:startId/:endId?', tasksPageController.getTasksFromEthNetwork);
 router.get('/tasks/', tasksPageController.getPageOfTasks);
 router.get('/tasks/:pageId', tasksPageController.getPageOfTasks);
+
+//Colony page api routes
+router.get('/colony/address/:id', colonyPageController.fetchAddressFromEth);
+router.get('/colony/domain/:id', colonyPageController.fetchDomainFromEth);
+router.get('/colony/task/:id', colonyPageController.fetchTaskFromEth);
 
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
