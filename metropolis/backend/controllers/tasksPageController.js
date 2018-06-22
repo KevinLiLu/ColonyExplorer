@@ -26,6 +26,31 @@ module.exports.getPageOfTasks = async function(req, res) {
   } catch (error) {
     console.log(error.message);
   }
+  // res.send({});
+};
 
-  res.send({});
+/*
+* Controller method to retrieve task details from ethereum network for tasks
+* between startId and endId for a given colonyId.
+*/
+module.exports.getTasksFromEthNetwork = async function(req, res) {
+  let response = {
+    tasks: [],
+  };
+
+  try {
+    const { colonyId, startId, endId } = req.params;
+    let networkClient = await getNetworkClient();
+    let colonyClient = await networkClient.getColonyClient(parseInt(colonyId));
+    let totalTaskCount = (await colonyClient.getTaskCount.call()).count;
+
+    for (var taskId = parseInt(startId); taskId < parseInt(endId) + 1 && taskId < totalTaskCount + 1; taskId++) {
+      let task = await colonyClient.getTask.call({ taskId });
+      response.tasks.push(task);
+    }
+  } catch (error) {
+    response.error = error.message;
+  };
+
+  res.send(response);
 };
