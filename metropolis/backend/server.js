@@ -12,7 +12,6 @@ import domainsPageController from './controllers/domainsPageController';
 import tasksPageController from './controllers/tasksPageController';
 import taskPageController from './controllers/taskPageController';
 import skillPageController from './controllers/skillPageController';
-import potsController from './controllers/potsController';
 import domainPageController from './controllers/domainPageController';
 import colonyPageController from './controllers/colonyPageController';
 
