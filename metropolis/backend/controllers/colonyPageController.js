@@ -57,7 +57,7 @@ module.exports.fetchDomainFromEth = async function(req, res) {
 module.exports.fetchTaskFromEth = async function(req, res) {
   let networkClient = await getNetworkClient();
   let id = req.params.id
-  console.log("this is req.params.id", req.params)
+  console.log("this is req.params.id", req.params.id)
 
   let colonyClient = (await networkClient.getColonyClient(parseInt(id)));
   let task = (await colonyClient.getTaskCount.call()).count;

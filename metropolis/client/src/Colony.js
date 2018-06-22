@@ -38,7 +38,7 @@ renderStatisticsFromEthereum = async () => {
   renderData = () => {
     this.renderAddressFromEthereum();
     this.renderDomainFromEthereum();
-    // this.renderTasksFromEthereum();
+    this.renderTasksFromEthereum();
     // this.renderRewardPotFromEthereum();
     this.renderTokensFromEthereum();
     this.renderTokenListFromEthereum();
@@ -67,10 +67,12 @@ renderDomainFromEthereum = async () => {
 
 renderTasksFromEthereum = async () => {
     const res = (await axios.get(`/api/colony/task/${this.props.match.params.id}`));
-    console.log('this is the task', res)
+    console.log('why you no work', this.props.match.params.id)
+    console.log('this is the task', res.data.task)
     this.setState({
-      totalTaskCount: res.data.totalTaskCount
+      totalTaskCount: res.data.task
     });
+    console.log('state of totalTaskCount', this.state.totalTaskCount)
   };
 
 // renderRewardPotFromEthereum = async () => {
@@ -167,9 +169,8 @@ rendertheRows = () => {
           />
           <StatCard
             title="Total # of Tasks"
-            value={ this.state.totalTask }
             buttonText="View All Tasks"
-            api="/api/colony/task/id"
+            api={`/api/colony/task/${this.props.match.params.id}`}
             linkTo="/tasks"
           />
           <StatCard
