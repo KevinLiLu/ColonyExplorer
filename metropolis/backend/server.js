@@ -39,7 +39,7 @@ router.get('/time-series-data/:name', timeSeriesDataController.getTimeSeriesData
 router.get('/colonies/', coloniesPageController.getPageOfColonies);
 router.get('/colonies/:pageId', coloniesPageController.getPageOfColonies);
 
-<<<<<<< HEAD
+
 // Skills
 router.get('/skills/', skillsPageController.getPageOfSkills);
 router.get('/skills/:pageId', skillsPageController.getPageOfSkills);
@@ -53,15 +53,14 @@ router.get('/domains/:pageId', domainsPageController.getPageOfDomains);
 router.get('/tasks/ethereum/:colonyId/:startId/:endId?', tasksPageController.getTasksFromEthNetwork);
 router.get('/tasks/', tasksPageController.getPageOfTasks);
 router.get('/tasks/:pageId', tasksPageController.getPageOfTasks);
-=======
+
 //Colony page api routes
 router.get('/colony/address/:id', colonyPageController.fetchAddressFromEth);
 router.get('/colony/domain/:id', colonyPageController.fetchDomainFromEth);
 // router.get('/colony/tasks', colonyPageController.fetchTaskFromEth);
 // router.get('/colony/reward-pot/:source', colonyPageController.fetchRewardPotFromEth);
 // router.get('/colony/non-reward-pot:source', colonyPageController.fetchNonRewardPotFromEth);
-// router.get('/colony/token/:id', colonyPageController.fetchTokenfromEth);
->>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
+router.get('/colony/token/:id', colonyPageController.fetchTokenfromEth);
 
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);

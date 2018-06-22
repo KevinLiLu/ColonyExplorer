@@ -1,33 +1,15 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 import axios from 'axios';
 import { Container, Grid } from 'semantic-ui-react';
 
->>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
-import StatCard from './StatCard';
+
+import StatCard from './components/StatCard';
 
 class Colony extends Component {
-
-<<<<<<< HEAD
-  state = {
-    address: '',
-    tokens: '',
-=======
-<<<<<<< HEAD
-  state = {
-    address: '',
-    tokens: '',
-=======
 
   state = {
     address: '',
     token: '',
->>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
     totalDomainCount: '',
     totalTaskCount: '',
     totalRewardPot: '',
@@ -42,10 +24,7 @@ class Colony extends Component {
     }
   };
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
+
 
 renderStatisticsFromEthereum = async () => {
     const data = (await axios.get('/api/statistics/ethereum')).data;
@@ -55,9 +34,7 @@ renderStatisticsFromEthereum = async () => {
     });
   };
 
-<<<<<<< HEAD
-=======
-=======
+
   componentDidMount = () => {
     this.renderData();
   };
@@ -116,8 +93,6 @@ renderTokensFromEthereum = async () => {
       token: res.data.name + ' ' + res.data.symbol
     });
   };
->>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
 
   render() {
     return(
@@ -125,18 +100,8 @@ renderTokensFromEthereum = async () => {
      <Container textAlign='center'>
 
         <h1>Colony {this.props.match.params.id}</h1>
-<<<<<<< HEAD
-        <h2>Address: {}</h2>
-        <h3>Token: {}</h3>
-=======
-<<<<<<< HEAD
-        <h2>Address: {}</h2>
-        <h3>Token: {}</h3>
-=======
         <h2>Address: {this.state.address}</h2>
         <h3>Token: {this.state.token}</h3>
->>>>>>> 8c16ccfec937d6e862205e69c592f02cd4a98d37
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
 
 
       <Grid columns={4} relaxed>

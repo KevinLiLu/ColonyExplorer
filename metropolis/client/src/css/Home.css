@@ -22,28 +22,10 @@
   font-size: large;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD:metropolis/client/src/Home.css
-=======
-<<<<<<< HEAD:metropolis/client/src/css/Home.css
-<<<<<<< HEAD:metropolis/client/src/css/Home.css
-<<<<<<< HEAD:metropolis/client/src/css/Home.css
-<<<<<<< HEAD:metropolis/client/src/css/Home.css
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD:metropolis/client/src/Home.css
->>>>>>> Update:metropolis/client/src/Home.css
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
-@keyframes Home-logo-spin {
-=======
-=======
+
 
 @keyframes Home-logo-spin {
 
->>>>>>> Update
 .logo{
   width: 200px;
   height: 75px;
@@ -54,50 +36,10 @@
  }
 }
 
-@keyframes App-logo-spin {
 
-=======
-=======
-<<<<<<< HEAD
->>>>>>> Update
-=======
-<<<<<<< HEAD
->>>>>>> Updates More:metropolis/client/src/Home.css
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
-<<<<<<< HEAD:metropolis/client/src/Home.css
-@keyframes Home-logo-spin {
-=======
-=======
-
-@keyframes Home-logo-spin {
-
->>>>>>> Update
-.logo{
-  width: 200px;
-  height: 75px;
- }
-
-.navBar {
-  background-color: black;
- }
-}
 
 @keyframes App-logo-spin {
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> Updated Homepage:colony-explorer/src/App.css
->>>>>>> Updated Homepage
-=======
 
->>>>>>> Update
-=======
-<<<<<<< HEAD:metropolis/client/src/css/Home.css
->>>>>>> Updated Homepage:colony-explorer/src/App.css
->>>>>>> Updated Homepage:metropolis/client/src/Home.css
-=======
-
->>>>>>> Updates More:metropolis/client/src/Home.css
->>>>>>> 16ceafc91b7055f59f8650c7c98c076b8103bae4
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
