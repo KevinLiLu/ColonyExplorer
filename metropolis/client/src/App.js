@@ -25,7 +25,7 @@ class App extends Component {
             <Route path="/colonies" component={Colonies}/>
             <Route path="/colony/:id" component={Colony}/>
             <Route path="/tasks" component={Tasks}/>
-            <Route path="/task/:id" component={Task}/>
+            <Route path="/task/:colonyId/:taskId" component={Task}/>
             <Route path="/manage" component={Manage}/>
             <Route path="/skills" component={Skills}/>
             <Route path="/domains" component={Domains}/>
