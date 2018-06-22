@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Table, Segment } from 'semantic-ui-react';
 
 
 import StatCard from './components/StatCard';
@@ -15,14 +15,8 @@ class Colony extends Component {
     totalTaskCount: '',
     totalRewardPot: '',
     totalNonRewardPot: '',
-    topDomains: {
-      labels: [],
-      data: []
-    },
-    topTasks: {
-      labels: [],
-      data: []
-    }
+    topDomains: [],
+    topTasks: []
   };
 
 
@@ -49,7 +43,10 @@ renderStatisticsFromEthereum = async () => {
     this.renderTokensFromEthereum();
     this.renderTokenListFromEthereum();
     this.renderDomainListFromEthereum();
-  };
+    this.renderRows();
+    this.rendertheRows();
+};
+
 
 
 renderAddressFromEthereum = async () => {
@@ -68,12 +65,13 @@ renderDomainFromEthereum = async () => {
     });
   };
 
-// renderTasksFromEthereum = async () => {
-//     const data = (await axios.get('/api/colony/tasks'));
-//     this.setState({
-//       totalTaskCount: data.totalTaskCount
-//     });
-//   };
+renderTasksFromEthereum = async () => {
+    const res = (await axios.get(`/api/colony/task/${this.props.match.params.id}`));
+    console.log('this is the task', res)
+    this.setState({
+      totalTaskCount: res.data.totalTaskCount
+    });
+  };
 
 // renderRewardPotFromEthereum = async () => {
 //     const data = (await axios.get('/api/colony/reward-pot')).totalRewardPot;
@@ -101,13 +99,51 @@ renderTokenListFromEthereum = async () => {
   const res = (await axios.get(`/api/tasks/ethereum/${this.props.match.params.id}/1/10`))
   console.log('this is a list of Tokens', res)
 
+  let array1 = res.data.tasks
+
+  this.setState({
+    topTasks: array1
+  })
+
 };
 
 renderDomainListFromEthereum = async () => {
   const res = (await axios.get(`/api/domains/ethereum/${this.props.match.params.id}/1/10`))
   console.log('this is a list of Domains', res)
 
+  let array = res.data.domains
+  console.log('this is the array', array)
+  this.setState({
+    topDomains: array
+  })
 };
+
+renderRows = () => {
+    return this.state.topDomains.map(topDomain => {
+      const { localSkillId, potId  } = topDomain;
+      return (
+        <Table.Row key={ Math.random() }>
+          <Table.Cell>
+             {localSkillId} , {potId}
+          </Table.Cell>
+        </Table.Row>
+      );
+    });
+  };
+
+rendertheRows = () => {
+    return this.state.topTasks.map(topTask => {
+      const { specificationHash, deliverableHash, finalized, cancelled, dueDate } = topTask;
+      return (
+        <Table.Row key={ Math.random() }>
+          <Table.Cell>
+             {JSON.stringify(specificationHash)} , {JSON.stringify(deliverableHash)}, {JSON.stringify(finalized)}, {JSON.stringify(cancelled)}, {JSON.stringify(dueDate)}
+          </Table.Cell>
+        </Table.Row>
+      );
+    });
+  };
+
 
   render() {
     return(
@@ -150,25 +186,35 @@ renderDomainListFromEthereum = async () => {
           />
         </Grid>
 
-      <article className="message is-info">
-        <div className="message-header">
-         <p>Domain</p>
-        </div>
-        <div className="message-body">
-        List of top 5 Domains
-        </div>
-        <a href="#">View All Domains</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-      </article>
+      <Segment basic>
+          <Table celled striped color='teal'>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Top 5 Domains ( Skill ID, Pot  ID)</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
 
-      <article className="message is-info">
-        <div className="message-header">
-         <p>Tasks</p>
-        </div>
-        <div className="message-body">
-        List of top 5 Taks
-        </div>
-        <a href="#">View All Tasks</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-      </article>
+            <Table.Body>
+              {this.renderRows()}
+            </Table.Body>
+          </Table>
+        </Segment>
+
+
+      <Segment basic>
+          <Table celled striped color='teal'>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Top 5 Tasks ( specificationHash, deliverableHash, finalized, cancelled, dueDate )</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+              {this.rendertheRows()}
+            </Table.Body>
+          </Table>
+        </Segment>
+
 
     </Container>
 

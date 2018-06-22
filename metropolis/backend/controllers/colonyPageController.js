@@ -32,35 +32,41 @@ module.exports.fetchDomainFromEth = async function(req, res) {
 
   let colonyClient = (await networkClient.getColonyClient(parseInt(id)));
 
-  let totalDomainCount = (await colonyClient.getDomainCount.call());
+  let totalDomainCount = (await colonyClient.getDomainCount.call()).count;
   console.log(networkClient.getDomainCount)
   res.send({
     totalDomainCount
   });
 };
 
-module.exports.fetchTokenfromEth = async function(req, res) {
-
-  // let id = req.params.id
-  // console.log(id)
-  // // let token = (await getTokenInfo(id));
-  // // console.log(token)
-  // res.send({
-
-  // });
-};
-
-
-// module.exports.fetchTaskFromEth = async function(req, res) {
+// module.exports.fetchTokenfromEth = async function(req, res) {
 //   let networkClient = await getNetworkClient();
+//   let id = req.params.id
+//   console.log(req.params)
 
-//   let totalTaskCount = (await networkClient.getTaskCount.call());
+//   let colonyClient = (await networkClient.getColonyClient(parseInt(id)));
+//   let token = (await colonyClient.getTokenInfo(id)).count;
+//   console.log(token)
 
 //   res.send({
-//     totalTaskCount
+//     token
 //   });
-
 // };
+
+
+module.exports.fetchTaskFromEth = async function(req, res) {
+  let networkClient = await getNetworkClient();
+  let id = req.params.id
+  console.log("this is req.params.id", req.params)
+
+  let colonyClient = (await networkClient.getColonyClient(parseInt(id)));
+  let task = (await colonyClient.getTaskCount.call()).count;
+  console.log('this is a task', task)
+
+  res.send({
+    task
+  });
+};
 
 // module.exports.fetchRewardPotFromEth = async function(req, res) {
 //   let networkClient = await getNetworkClient();
