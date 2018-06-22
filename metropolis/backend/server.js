@@ -11,6 +11,9 @@ import skillsPageController from './controllers/skillsPageController';
 import domainsPageController from './controllers/domainsPageController';
 import tasksPageController from './controllers/tasksPageController';
 import taskPageController from './controllers/taskPageController';
+import skillPageController from './controllers/skillPageController';
+import potsController from './controllers/potsController';
+import domainPageController from './controllers/domainPageController';
 
 // and create our instances
 const app = express();
@@ -39,11 +42,15 @@ router.get('/time-series-data/:name', timeSeriesDataController.getTimeSeriesData
 router.get('/colonies/', coloniesPageController.getPageOfColonies);
 router.get('/colonies/:pageId', coloniesPageController.getPageOfColonies);
 
+// Skill
+router.get('/skill/:skillId', skillPageController.getSkillFromEthNetwork);
+
 // Skills
 router.get('/skills/', skillsPageController.getPageOfSkills);
 router.get('/skills/:pageId', skillsPageController.getPageOfSkills);
 
 // Domains
+router.get('/domain/:colonyId/:domainId', domainPageController.getDomainDetailsFromEthNetwork);
 router.get('/domains/ethereum/:colonyId/:startId/:endId?', domainsPageController.getDomainsFromEthNetwork);
 router.get('/domains/', domainsPageController.getPageOfDomains);
 router.get('/domains/:pageId', domainsPageController.getPageOfDomains);
@@ -58,5 +65,9 @@ router.get('/tasks/:pageId', tasksPageController.getPageOfTasks);
 
 // Token api routes
 router.get('/token/colonyId/:colonyId', tokenController.getTokenInfo);
+
+// Pot data
+// router.get('/reward-pot/:colonyId', potsController.getRewardPotBalances);
+// router.get('/non-reward-pot/:colonyId', potsController.getNonRewardPotsBalances);
 
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));
