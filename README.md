@@ -42,15 +42,21 @@ The goal of `metropolis` is to provide a hub for both developers and non-develop
 
 `metropolis` fetches live data from the Etheruem network, and cached data from the `general-store`.
 
+Additional details can be found at [metropolis/README.md](metropolis/README.md).
+
 ### Colony Inspector
 
 The `colony-inspector` is a backend daemon that periodically crawls the entire Colony Network to generate statistics and save metadata.
 
 The `colony-inspector` currently uses Node.js and a scheduled thread to operate.
 
+Additional details can be found at [colony-inspector/README.md](colony-inspector/README.md).
+
 ### General Store
 
 The `general-store` is the MongoDB cache that holds some metadata about the Colony Network. The `colony-inspector` saves statistics and metadata into the `general-store`, and `metropolis` pulls data from the `general-store` to render data to the user.
+
+Additional details can be found at [general-store/README.md](general-store/README.md).
 
 ## Next Steps
 
