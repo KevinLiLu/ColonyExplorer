@@ -8,6 +8,7 @@
     "@colony/colony-js-client": "^1.5.1",
     "@colony/colony-js-contract-loader-network": "^1.0.3",
     "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.3",
@@ -23,6 +24,8 @@
   "scripts": {
     "start:server": "cd backend && nodemon server.js --exec babel-node --presets es2015,stage-0",
     "start:client": "cd client && yarn start",
-    "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\""
+    "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\"",
+    "build": "babel backend -d dist --presets es2015,stage-2",
+    "serve": "nodemon dist/server.js"
   }
 }
